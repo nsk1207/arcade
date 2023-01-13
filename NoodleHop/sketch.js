@@ -25,7 +25,6 @@ var movingBrick = function(x, y) {
  };
 
 
-
 for (var i = 70; i < 485; i += 100) {
     var brickSpots = [10, 137, 264, 390];
     var brickX = brickSpots[round(random(0, 3))];
