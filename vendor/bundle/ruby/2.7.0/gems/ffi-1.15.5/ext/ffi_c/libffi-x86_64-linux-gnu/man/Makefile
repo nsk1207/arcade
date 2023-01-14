@@ -13,7 +13,11 @@
 # PARTICULAR PURPOSE.
 
 
+<<<<<<< HEAD
 VPATH = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/man
+=======
+VPATH = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/man
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 am__is_gnu_make = { \
   if test -z '$(MAKELEVEL)'; then \
     false; \
@@ -165,16 +169,26 @@ MANS = $(man_MANS)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 am__DIST_COMMON = $(srcdir)/Makefile.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+<<<<<<< HEAD
 ACLOCAL = ${SHELL} /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing aclocal-1.16
+=======
+ACLOCAL = ${SHELL} /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing aclocal-1.16
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 ALLOCA = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AM_LTLDFLAGS = 
 AM_RUNTESTFLAGS = 
 AR = ar
+<<<<<<< HEAD
 AUTOCONF = ${SHELL} /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing autoconf
 AUTOHEADER = ${SHELL} /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing autoheader
 AUTOMAKE = ${SHELL} /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing automake-1.16
+=======
+AUTOCONF = ${SHELL} /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing autoconf
+AUTOHEADER = ${SHELL} /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing autoheader
+AUTOMAKE = ${SHELL} /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing automake-1.16
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 AWK = gawk
 CC = gcc
 CCAS = gcc
@@ -219,7 +233,11 @@ LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
 MAINT = #
+<<<<<<< HEAD
 MAKEINFO = ${SHELL} /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing makeinfo
+=======
+MAKEINFO = ${SHELL} /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/missing makeinfo
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 MANIFEST_TOOL = :
 MKDIR_P = /usr/bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -248,10 +266,17 @@ TARGET = X86_64
 TARGETDIR = x86
 TARGET_OBJ =  src/x86/ffi64.lo src/x86/unix64.lo src/x86/ffiw64.lo src/x86/win64.lo
 VERSION = 3.3
+<<<<<<< HEAD
 abs_builddir = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi-x86_64-linux-gnu/man
 abs_srcdir = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/man
 abs_top_builddir = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi-x86_64-linux-gnu
 abs_top_srcdir = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi
+=======
+abs_builddir = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi-x86_64-linux-gnu/man
+abs_srcdir = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/man
+abs_top_builddir = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi-x86_64-linux-gnu
+abs_top_srcdir = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -282,7 +307,11 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
+<<<<<<< HEAD
 install_sh = ${SHELL} /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/install-sh
+=======
+install_sh = ${SHELL} /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/install-sh
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -297,7 +326,11 @@ psdir = ${docdir}
 runstatedir = ${localstatedir}/run
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
+<<<<<<< HEAD
 srcdir = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/man
+=======
+srcdir = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi/man
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 sys_symbol_underscore = no
 sysconfdir = ${prefix}/etc
 target = x86_64-pc-linux-gnu
@@ -309,7 +342,11 @@ toolexecdir = ${libdir}/gcc-lib/$(target_alias)
 toolexeclibdir = ${libdir}/../lib
 top_build_prefix = ../
 top_builddir = ..
+<<<<<<< HEAD
 top_srcdir = /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi
+=======
+top_srcdir = /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/ffi-1.15.5/ext/ffi_c/libffi
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 AUTOMAKE_OPTIONS = foreign
 EXTRA_DIST = ffi.3 ffi_call.3 ffi_prep_cif.3 ffi_prep_cif_var.3
 man_MANS = ffi.3 ffi_call.3 ffi_prep_cif.3 ffi_prep_cif_var.3

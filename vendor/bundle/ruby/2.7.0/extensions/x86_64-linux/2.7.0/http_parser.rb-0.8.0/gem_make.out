@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
 /usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-28914-1muw9pm.rb extconf.rb
 creating Makefile
@@ -6,11 +7,27 @@ current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/http_pars
 make "DESTDIR=" clean
 
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-1007-1rg5xwy.rb extconf.rb
+creating Makefile
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make "DESTDIR=" clean
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 make "DESTDIR="
 compiling ruby_http_parser.c
 compiling ryah_http_parser.c
 linking shared-object ruby_http_parser.so
 
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
 make "DESTDIR=" install
 /usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20230114-28914-1bw64cm
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20230114-1007-oq471x
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018

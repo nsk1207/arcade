@@ -1,17 +1,35 @@
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
 /usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-28914-6nnp3j.rb extconf.rb
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-1007-hhg96c.rb extconf.rb
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 checking for rb_block_call()... yes
 checking for rb_ary_subseq()... yes
 creating Makefile
 
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
 make "DESTDIR=" clean
 
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 make "DESTDIR="
 compiling cparse.c
 linking shared-object racc/cparse.so
 
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
 make "DESTDIR=" install
 /usr/bin/install -c -m 0755 cparse.so ./.gem.20230114-28914-1br0b90/racc
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/racc-1.6.2/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20230114-1007-wb3o0u/racc
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018

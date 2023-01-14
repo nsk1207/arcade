@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
 /usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-28914-12u3yg3.rb extconf.rb
 creating Makefile
@@ -6,6 +7,16 @@ current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/commonmar
 make "DESTDIR=" clean
 
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-1007-vc2y7l.rb extconf.rb
+creating Makefile
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
+make "DESTDIR=" clean
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 make "DESTDIR="
 compiling arena.c
 compiling autolink.c
@@ -56,6 +67,12 @@ compiling utf8.c
 compiling xml.c
 linking shared-object commonmarker/commonmarker.so
 
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
 make "DESTDIR=" install
 /usr/bin/install -c -m 0755 commonmarker.so ./.gem.20230114-28914-1xz9bup/commonmarker
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/commonmarker-0.23.6/ext/commonmarker
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 commonmarker.so ./.gem.20230114-1007-1o9sogv/commonmarker
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018

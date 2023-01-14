@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
 /usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-28914-1hf59zn.rb extconf.rb
 checking for -lstdc++... yes
@@ -7,10 +8,27 @@ current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/unf_ext-0
 make "DESTDIR=" clean
 
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20230114-1007-jhslwv.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
 make "DESTDIR="
 compiling unf.cc
 linking shared-object unf_ext.so
 
+<<<<<<< HEAD
 current directory: /home/nsk/vscode/game/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
 make "DESTDIR=" install
 /usr/bin/install -c -m 0755 unf_ext.so ./.gem.20230114-28914-b56trb
+=======
+current directory: /home/nsk/vscode/quiz/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20230114-1007-nqu0kb
+>>>>>>> 460ee900c750bc88514717802a9f42a6ae6a2018
