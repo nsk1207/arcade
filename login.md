@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sign Up</title>
+    <title>Login</title>
     <style>
         h1 {
           text-align: center;
@@ -24,7 +24,7 @@
           color: #fcf6d9;
           border: none;
           border-radius: 5px;
-          border-bottom: 4px solid #f1cc0c;
+          border-bottom: 4px solid #32CD32;
           transition-duration: 0.3s;
         }
         input.login:focus {
@@ -45,13 +45,13 @@
           padding: 2%;
           border-radius: 8px;
           background-color: #302f2f;
-          color: #f1cc0c;
+          color: #32CD32;
           border: none;
           transition-duration: 0.3s;
         }
         button:hover {
           color: #242424;
-          background-color: #f1cc0c;
+          background-color: #32CD32;
           width: 45%;
           margin-left: 27.5%;
           margin-right: 27.5%;
@@ -65,35 +65,35 @@
           position: inline;
           width: 50%;
         }
-        #alracc {
+        #dontacc {
           font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
           font-size: 25px;
           text-align: center;
           margin-bottom: 0%;          
         }
     </style>
+    
 
   </head>
   <body>
     <h1 class="header">
-      Sign Up
+      Log In
     </h1>
     <input type="username" class="login" id="usrnm" placeholder="Username">
-    <input type="name" class="login" id="name" placeholder="Full Name">
     <input type="password" class="login" id="pswd" placeholder="Password">
-    <input type="password" class="login" id="pswdv" placeholder="Re-type Password">
     <div>
     <br>
-      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/arcade/account';">Create Account</button>
+      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/arcade/account';">Enter</button>
       <div class="noacc">
-       <p id="alracc">Already have an account?</p>
+       <p id="dontacc">Don't have an account?</p>
       </div>
-      <button id="login" type="button" onclick="window.location.href='{{ site.baseurl }}/arcade/login/login';">Log In</button>
+      <button id="signup" type="button" onclick="window.location.href='{{ site.baseurl }}/arcade/login/signup';">Sign up</button>
     </div>
+    
   </body>
   <script>
       // Get the input field
-      var input = document.getElementById("pswdv");
+      var input = document.getElementById("pswd");
       // Execute a function when the user presses a key on the keyboard
       input.addEventListener("keypress", function(event) {
         // If the user presses the "Enter" key on the keyboard
