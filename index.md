@@ -20,7 +20,7 @@
         </tr>
         <tr>
            <td><input type="submit" name="submit" value="Login"></td>
-           <td><p>Not yet a Member? <a href="register.md">Register</a></p></td>
+           <td><p>Not yet a Member? <a href="register.">Register</a></p></td>
         </tr>
       </table>
   </form>

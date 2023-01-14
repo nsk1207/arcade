@@ -12,40 +12,36 @@
       <table>
         <tr>
           <td>Username:</td>
-          <td><input type="text" name="user" placeholder="Enter name Here"></td>
+          <td><input type="text" name="user" placeholder="Enter Name"></td>
         </tr>
         <tr>
           <td>Password:</td>
-          <td><input type="password" name="user_pass" placeholder="Enter Password Here"></td>
+          <td><input type="password" name="user_pass" placeholder="Enter Password"></td>
         </tr>
         <tr>
           <td>Email:</td>
-          <td><input type="email" name="mail" placeholder="Enter Email Here"></td>
+          <td><input type="email" name="mail" placeholder="Enter Email"></td>
         </tr>
         <tr>
           <td>Gender:</td>
           <td>
           <input type="radio" name="gender"> Male
           <input type="radio" name="gender"> Female
-          <input type="radio" name="gender"> Others
+          <input type="radio" name="gender"> Other
           </td>
         </tr>
         <tr>
           <td>Phone:</td>
           <td>
             <select name="country_code">
-              <option value="+254">+254</option>
-              <option value="+255">+255</option>
-              <option value="+256">+256</option>
-              <option value="+257">+257</option>
-              <option value="+258">+258</option>
+              <option value="+858">+858</option>
             </select>
-            <input type="phone" name="mob_digits" placeholder="**********">
+            <input type="phone" name="mob_digits" placeholder="*******">
           </td>
         </tr>
         <tr>
-           <td><input type="submit" name="submit" value="submit"></td>
-           <td><p>Already a user? <a href="login.php">Login Here</a></p></td>
+           <td><input type="Submit" name="Submit" value="Submit"></td>
+           <td><p>Already a user? <a href="index.html">Login Here</a></p></td>
         </tr>
       </table>
   </form>
