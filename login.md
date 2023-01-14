@@ -6,13 +6,13 @@
     <style>
         h1 {
           text-align: center;
-          font-size: 40px;
-          font-weight: 700;
+          font-size: 70px;
+          font-weight: 600;
           color: #fcf6d9;
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
         }
         input.login {
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
           margin-top: 5%;
           position: inline;
           width: 50%;
@@ -34,7 +34,7 @@
         button {
           outline: none;
           -webkit-tap-highlight-color: transparent;
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
           font-size: 20px;
           margin-top: 4%; 
           margin-bottom: 4%;
@@ -66,31 +66,25 @@
           width: 50%;
         }
         #dontacc {
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
           font-size: 25px;
           text-align: center;
           margin-bottom: 0%;          
         }
     </style>
     
-
   </head>
   <body>
     <h1 class="header">
-      Log In
+      Sign In
     </h1>
-    <input type="username" class="login" id="usrnm" placeholder="Username">
-    <input type="password" class="login" id="pswd" placeholder="Password">
+    <input type="username" class="login" id="usrnm" placeholder="Type a Username">
+    <input type="password" class="login" id="pswd" placeholder="Type a Password">
     <div>
     <br>
-      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/arcade/account';">Enter</button>
+      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/game';">Enter</button>
       <div class="noacc">
-       <p id="dontacc">Don't have an account?</p>
-      </div>
-      <button id="signup" type="button" onclick="window.location.href='{{ site.baseurl }}/arcade/login/signup';">Sign up</button>
-    </div>
     
-  </body>
   <script>
       // Get the input field
       var input = document.getElementById("pswd");
@@ -104,4 +98,3 @@
         }
       });
     </script>
-</html>
