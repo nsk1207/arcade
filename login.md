@@ -82,9 +82,10 @@
     <input type="password" class="login" id="pswd" placeholder="Type a Password">
     <div>
     <br>
-      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/game';">Enter</button>
+      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';">Enter</button>
+      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/register';">Register</button>
       <div class="noacc">
-    
+
   <script>
       // Get the input field
       var input = document.getElementById("pswd");
