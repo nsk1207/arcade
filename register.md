@@ -65,16 +65,14 @@
 
   </head>
   <body>
-    <h1 class="header">
-      Sign Up Here!
-    </h1>
+    <h1 class="header"> Sign Up Here! </h1>
     <input type="username" class="login" id="usrnm" placeholder="Username">
-    <input type="name" class="login" id="name" placeholder="Full Name">
+    <input type="name" class="login" id="name" placeholder="Your Full Name">
     <input type="password" class="login" id="pswd" placeholder="Password">
     <div>
     <br>
       <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';">Create Account</button>
-      <div class="noacc">
+      <div class="sign">
   <script>
       var input = document.getElementById("pswdv");
       input.addEventListener("keypress", function(event) {

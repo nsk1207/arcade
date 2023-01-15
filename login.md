@@ -14,16 +14,12 @@
         input.login {
           margin-top: 5%;
           position: inline;
-          width: 50%;
-          margin-left: 25%;
-          margin-right: 30%;
+          width: 50%
           padding: 2%;
           font-size: 25px;
           background-color: #242424;
           color: #fcf6d9;
           border: none;
-          border-radius: 5px;
-          border-bottom: 4px solid #32CD32;
           position: inline;
           font-family: 'Verdana'
         }
@@ -35,23 +31,16 @@
           outline: none;
           -webkit-tap-highlight-color: transparent;
           font-size: 20px;
-          margin-top: 4%; 
-          margin-bottom: 4%;
           position: inline;
           width: 40%;
           margin-left: 30%;
           margin-right: 30%;
-          padding: 2%;
-          border-radius: 8px;
-          background-color: #A9A9A9;
           color: #DCDCDC;
           border: #32CD32;
           font-family: 'Verdana'
         }
         div.signup {
           margin-top: 4%;
-          margin-left: 25%;
-          margin-right: 25%;
           position: inline;
           width: 50%;
         }
@@ -65,9 +54,7 @@
     
   </head>
   <body>
-    <h1 class="header">
-      Sign In
-    </h1>
+    <h1 class="header">Sign In</h1>
     <input type="username" class="login" id="usrnm" placeholder="Type a Username">
     <input type="password" class="login" id="pswd" placeholder="Type a Password">
     <div>
@@ -75,7 +62,6 @@
       <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';">Enter</button>
       <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/register';">Register</button>
       <div class="noacc">
-
   <script>
       var input = document.getElementById("pswd");
       input.addEventListener("keypress", function(event) {
