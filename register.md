@@ -23,7 +23,6 @@
           color: #fcf6d9;
           border: none;
           border-radius: 5px;
-          border-bottom: 4px solid #32CD32;
           position: inline;
           font-family: 'Verdana'
         }
@@ -45,7 +44,6 @@
           border-radius: 8px;
           background-color: #A9A9A9;
           color: #DCDCDC;
-          border: #32CD32;
           font-family: 'Verdana'
         }
         div.signup {
