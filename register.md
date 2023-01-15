@@ -9,10 +9,9 @@
           font-size: 40px;
           font-weight: 700;
           color: #fcf6d9;
-          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
+          font-family: 'Verdana'
         }
         input.login {
-          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
           margin-top: 5%;
           position: inline;
           width: 50%;
@@ -25,16 +24,16 @@
           border: none;
           border-radius: 5px;
           border-bottom: 4px solid #32CD32;
-          transition-duration: 0.3s;
+          position: inline;
+          font-family: 'Verdana'
         }
-        input.login:focus {
+        input.loginfocus {
           background-color: #4d4c4b;
           outline: none;
         }
         button {
           outline: none;
           -webkit-tap-highlight-color: transparent;
-          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
           font-size: 20px;
           margin-top: 4%; 
           margin-bottom: 4%;
@@ -44,39 +43,30 @@
           margin-right: 30%;
           padding: 2%;
           border-radius: 8px;
-          background-color: #302f2f;
-          color: #32CD32;
+          background-color: #A9A9A9;
+          color: #DCDCDC;
           border: #32CD32;
-          transition-duration: 0.3s;
+          font-family: 'Verdana'
         }
-        button:hover {
-          color: #32CD32;
-          background-color: #f1cc0c;
-          width: 45%;
-          margin-left: 27.5%;
-          margin-right: 27.5%;
-          margin-bottom: 3%;
-          padding: 2.5%;
-        }
-        div.noacc {
+        div.signup {
           margin-top: 4%;
           margin-left: 25%;
           margin-right: 25%;
           position: inline;
           width: 50%;
         }
-        #alracc {
-          font-family: 'Verdana', 'Verdana', Verdana, 'Verdana', Verdana;
+        #sign {
           font-size: 25px;
           text-align: center;
-          margin-bottom: 0%;          
+          margin-bottom: 0%;   
+          font-family: 'Verdana'     
         }
     </style>
 
   </head>
   <body>
     <h1 class="header">
-      Sign Up
+      Sign Up Here!
     </h1>
     <input type="username" class="login" id="usrnm" placeholder="Username">
     <input type="name" class="login" id="name" placeholder="Full Name">
