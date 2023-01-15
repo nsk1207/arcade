@@ -50,7 +50,7 @@
     </style>
 
 <script>
-var ball = document.getElementById("ball");
+var ball = ("ball");
 var paddleLeft = document.getElementById("paddle-left");
 var paddleRight = document.getElementById("paddle-right");
 
