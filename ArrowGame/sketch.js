@@ -2,25 +2,25 @@ function setup() {
     createCanvas(400, 400);
   }
 
-var y1 = -580;
-var y2 = -480;
-var y3 = -380;
-var y4 = -280;
-var y5 = -180;
-var y6 = -80;
+let y1 = -580;
+let y2 = -480;
+let y3 = -380;
+let y4 = -280;
+let y5 = -180;
+let y6 = -80;
 
-var type1 = random(0, 4);
-var type2 = random(0, 4);
-var type3 = random(0, 4);
-var type4 = random(0, 4);
-var type5 = random(0, 4);
-var type6 = random(0, 4);
+let type1 = random(0, 4);
+let type2 = random(0, 4);
+let type3 = random(0, 4);
+let type4 = random(0, 4);
+let type5 = random(0, 4);
+let type6 = random(0, 4);
 
 draw = function() {
     
   background(134, 190, 227);
 
-  var outline1 = stroke(0, 0, 0);
+  let outline1 = stroke(0, 0, 0);
 
   stroke(0, 0, 0);
   strokeWeight(5);
@@ -30,7 +30,7 @@ draw = function() {
   strokeWeight(90);
   line(0, 540, 600, 540);
 
-  var up = function(y) {
+  up = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
@@ -45,7 +45,7 @@ draw = function() {
     line(75, y, 95, y + 20);
   };
 
-  var right = function(y) {
+  right = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
@@ -60,7 +60,7 @@ draw = function() {
     line(252, y + 27, 232, y + 07);
   };
 
-  var down = function(y) {
+  down = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
@@ -75,7 +75,7 @@ draw = function() {
     line(375, y + 55, 395, y + 35);
   };
 
-  var left = function(y) {
+  left = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
