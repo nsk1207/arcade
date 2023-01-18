@@ -1,7 +1,10 @@
+<script>
+
 function setup() {
     createCanvas(600, 600);
   }
 
+// Y - position variables
 let y1 = -580;
 let y2 = -480;
 let y3 = -380;
@@ -9,6 +12,7 @@ let y4 = -280;
 let y5 = -180;
 let y6 = -80;
 
+// Arrow type variables
 let type1 = random(0, 4);
 let type2 = random(0, 4);
 let type3 = random(0, 4);
@@ -22,6 +26,7 @@ draw = function() {
 
   let outline1 = stroke(0, 0, 0);
 
+  // Game setup and structure
   stroke(0, 0, 0);
   strokeWeight(5);
   line(150, 0, 150, 600);
@@ -30,6 +35,7 @@ draw = function() {
   strokeWeight(90);
   line(0, 540, 600, 540);
 
+  // Up, right, down, and left arrows
   up = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
@@ -90,6 +96,7 @@ draw = function() {
     line(492, y + 27, 512, y + 07);
   };
 
+  // Random arrows at 1st y-position
   if(type1 <= 1) {
     up(y1);
   }
@@ -103,6 +110,7 @@ draw = function() {
     left(y1);
   }
 
+  // Random arrows at 2nd y-position
   if(type2 <= 1) {
     up(y2);
   }
@@ -116,6 +124,7 @@ draw = function() {
     left(y2);
   }
 
+  // Random arrows at 3rd y-position
   if(type3 <= 1) {
     up(y1);
   }
@@ -129,6 +138,7 @@ draw = function() {
     left(y1);
   }
 
+  // Random arrows at 4th y-position
   if(type4 <= 1) {
     up(y4);
   }
@@ -142,6 +152,7 @@ draw = function() {
     left(y4);
   }
 
+  // Random arrows at 5th y-position
   if(type5 <= 1) {
     up(y1);
   }
@@ -155,6 +166,7 @@ draw = function() {
     left(y5);
   }
 
+  // Random arrows at 6th y-position
   if(type6 <= 1) {
     up(y6);
   }
@@ -168,6 +180,7 @@ draw = function() {
     left(y6);
   }
 
+  // Arrow movement
   if(y1 < 700) {
     y1 += 3;
   }
@@ -187,6 +200,7 @@ draw = function() {
     y6 += 3;
   }
 
+  // Arrow repeat sequence
   if(y1 > 680) {
     y1 -= 700;
   }
@@ -207,3 +221,5 @@ draw = function() {
   }
 
 };
+
+</script>
