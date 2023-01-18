@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>mastermind</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="masterMind_files/libs/clipboard/clipboard.min.js"></script>
+<script src="masterMind_files/libs/quarto-html/quarto.js"></script>
+<script src="masterMind_files/libs/quarto-html/popper.min.js"></script>
+<script src="masterMind_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="masterMind_files/libs/quarto-html/anchor.min.js"></script>
+<link href="masterMind_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="masterMind_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="masterMind_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="masterMind_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="masterMind_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<script>
+
+// Game board
+background(255, 223, 219);
+stroke(0, 0, 0);
+strokeWeight(2);
+fill(250, 173, 173);
+rect(15, 1, 255, 397, 15);
+rect(280, 1, 109, 397, 15);
+for(var x = 45; x<270; x+=65) {
+    for(var y = 25; y<395; y+=50) {
+        noStroke();
+        fill(250, 128, 114);
+        ellipse(x, y, 40, 40);
+    }
+}
+for(var x = 45; x<270; x+=65) {
+    for(var y = 25; y<395; y+=50) {
+        noFill();
+        stroke(0, 0, 0, 15);
+        strokeWeight(5);
+        arc(x, y, 35, 35, 105, 305);
+    }
+}
+for(var x = 300; x<380; x+=23) {
+    for(var y = 25; y<395; y+=50) {
+        noStroke();
+        fill(250, 128, 114);
+        ellipse(x, y, 15, 15);
+    }
+}
+for(var x = 300; x<380; x+=23) {
+    for(var y = 25; y<395; y+=50) {
+        noFill();
+        stroke(0, 0, 0, 15);
+        strokeWeight(3);
+        arc(x, y, 12, 12, 105, 305);
+    }
+}
+
+// Random sequence
+var coverY = 1;
+var color1 = [0, 255];
+var color2 = [0, 255];
+var color3  = [0, 255];
+
+var randomColor1a = round(random(0, 1));
+var randomColor2a = round(random(0, 1));
+var randomColor3a = round(random(0, 1));
+var randomColor1b = round(random(0, 1));
+var randomColor2b = round(random(0, 1));
+var randomColor3b = round(random(0, 1));
+var randomColor1c = round(random(0, 1));
+var randomColor2c = round(random(0, 1));
+var randomColor3c = round(random(0, 1));
+var randomColor1d = round(random(0, 1));
+var randomColor2d = round(random(0, 1));
+var randomColor3d = round(random(0, 1));
+
+if(randomColor1a===0 && randomColor2a===1) {
+    randomColor3a=0;
+}
+if(randomColor1a===1 && randomColor3a===1) {
+    randomColor2a=1;
+}
+if(randomColor1b===0 && randomColor2b===1) {
+    randomColor3b=0;
+}
+if(randomColor1b===1 && randomColor3b===1) {
+    randomColor2b=1;
+}
+if(randomColor1c===0 && randomColor2c===1) {
+    randomColor3c=0;
+}
+if(randomColor1c===1 && randomColor3c===1) {
+    randomColor2c=1;
+}
+if(randomColor1d===0 && randomColor2d===1) {
+    randomColor3d=0;
+}
+if(randomColor1d===1 && randomColor3d===1) {
+    randomColor2d=1;
+}
+
+stroke(0, 0, 0);
+strokeWeight(1);
+fill(color1[randomColor1a], color2[randomColor2a], color3[randomColor3a]);
+ellipse(45, 25, 40, 40);
+fill(color1[randomColor1b], color2[randomColor2b], color3[randomColor3b]);
+ellipse(110, 25, 40, 40);
+fill(color1[randomColor1c], color2[randomColor2c], color3[randomColor3c]);
+ellipse(175, 25, 40, 40);
+fill(color1[randomColor1d], color2[randomColor2d], color3[randomColor3d]);
+ellipse(240, 25, 40, 40);
+strokeWeight(2);
+fill(250, 173, 173);
+rect(15, coverY, 255, 50, 15);
+textSize(50);
+fill(250, 128, 114);
+text("?", 30, coverY+43);
+text("?", 95, coverY+43);
+text("?", 160, coverY+43);
+text("?", 225, coverY+43);
+
+// Game markers
+var colorClicker1 = 0;
+var colorClicker2 = 0;
+var colorClicker3 = 0;
+var colorClicker4 = 0;
+
+var tokenY = 375;
+var numTokens = 0;
+var guessSize = 50;
+
+var currentColor1a = 0;
+var currentColor2a = 0;
+var currentColor3a = 0;
+var currentColor1b = 0;
+var currentColor2b = 0;
+var currentColor3b = 0;
+var currentColor1c = 0;
+var currentColor2c = 0;
+var currentColor3c = 0;
+var currentColor1d = 0;
+var currentColor2d = 0;
+var currentColor3d = 0;
+
+draw = function() {
+    
+    stroke(0, 0, 0);
+    strokeWeight(8);
+    line(0, tokenY, 18, tokenY);
+    line(18, tokenY, 12, tokenY-5);
+    line(18, tokenY, 12, tokenY+5);
+    strokeWeight(2);
+
+    var correction1 = function(y) {
+        noStroke();
+        fill(0, 0, 0);
+        ellipse(300, y, 15, 15);
+    
+    };
+    var correction2 = function(y) {
+        noStroke();
+        fill(255, 255, 255);
+        ellipse(300, y, 15, 15);
+    };
+    var correction3 = function() {
+    };
+    var correction4 = function() {
+    };
+
+    mousePressed = function() {
+        
+        if(mouseX>25 && mouseX<65 && mouseY>tokenY-20 && mouseY<tokenY+20) {
+            if(colorClicker1===0 || colorClicker1===0.5) {
+                fill(255, 0, 0);
+                colorClicker1+=0.5;
+        }
+            if(colorClicker1===1 || colorClicker1===1.5) {
+                fill(255, 255, 0);
+                colorClicker1+=0.5;
+            }
+            if(colorClicker1===2 || colorClicker1===2.5) {
+                fill(0, 255, 0);
+                colorClicker1+=0.5;
+            }
+            if(colorClicker1===3 || colorClicker1===3.5) {
+                fill(0, 0, 255);
+                colorClicker1+=0.5;
+            }
+            if(colorClicker1===4 || colorClicker1===4.5) {
+                fill(0, 0, 0);
+                colorClicker1+=0.5;
+            }
+            if(colorClicker1===5) {
+                fill(255, 255, 255);
+                colorClicker1-=5;
+            }
+            ellipse(45, tokenY, 40, 40);
+            numTokens+=1;
+    }
+        if(mouseX>90 && mouseX<130 && mouseY>tokenY-20 && mouseY<tokenY+20) {
+            if(colorClicker2===0 || colorClicker2===0.5) {
+                fill(255, 0, 0);
+                colorClicker2+=0.5;
+            }
+            if(colorClicker2===1 || colorClicker2===1.5) {
+                fill(255, 255, 0);
+                colorClicker2+=0.5;
+            }
+            if(colorClicker2===2 || colorClicker2===2.5) {
+                fill(0, 255, 0);
+                colorClicker2+=0.5;
+            }
+            if(colorClicker2===3 || colorClicker2===3.5) {
+                fill(0, 0, 255);
+                colorClicker2+=0.5;
+            }
+            if(colorClicker2===4 || colorClicker2===4.5) {
+                fill(0, 0, 0);
+                colorClicker2+=0.5;
+            }
+            if(colorClicker2===5) {
+                fill(255, 255, 255);
+                colorClicker2-=5;
+            }
+            ellipse(110, tokenY, 40, 40);
+            numTokens+=1;
+        }
+        if(mouseX>155 && mouseX<195 && mouseY>tokenY-20 && mouseY<tokenY+20) {
+            if(colorClicker3===0 || colorClicker3===0.5) {
+                fill(255, 0, 0);
+                colorClicker3+=0.5;
+            }
+            if(colorClicker3===1 || colorClicker3===1.5) {
+                fill(255, 255, 0);
+                colorClicker3+=0.5;
+            }
+            if(colorClicker3===2 || colorClicker3===2.5) {
+                fill(0, 255, 0);
+                colorClicker3+=0.5;
+            }
+            if(colorClicker3===3 || colorClicker3===3.5) {
+                fill(0, 0, 255);
+                colorClicker3+=0.5;
+            }
+            if(colorClicker3===4 || colorClicker3===4.5) {
+                fill(0, 0, 0);
+                colorClicker3+=0.5;
+            }
+            if(colorClicker3===5) {
+                fill(255, 255, 255);
+                colorClicker3-=5;
+            }
+            ellipse(175, tokenY, 40, 40);
+            numTokens+=1;
+        }
+        if(mouseX>220 && mouseX<260 && mouseY>tokenY-20 && mouseY<tokenY+20) {
+            if(colorClicker4===0 || colorClicker4===0.5) {
+                fill(255, 0, 0);
+                colorClicker4+=0.5;
+            }
+            if(colorClicker4===1 || colorClicker4===1.5) {
+                fill(255, 255, 0);
+                colorClicker4+=0.5;
+            }
+            if(colorClicker4===2 || colorClicker4===2.5) {
+                fill(0, 255, 0);
+                colorClicker4+=0.5;
+            }
+            if(colorClicker4===3 || colorClicker4===3.5) {
+                fill(0, 0, 255);
+                colorClicker4+=0.5;
+            }
+            if(colorClicker4===4 || colorClicker4===4.5) {
+                fill(0, 0, 0);
+                colorClicker4+=0.5;
+            }
+            if(colorClicker4===5) {
+                fill(255, 255, 255);
+                colorClicker4-=5;
+            }
+            ellipse(240, tokenY, 40, 40);
+            numTokens+=1;
+        }
+        
+        if(colorClicker1===0.5) {
+            currentColor1a+=255;
+            currentColor2a+=0;
+            currentColor3a+=0;
+        }
+        if(colorClicker1===1.5) {
+            currentColor1a+=255;
+            currentColor2a+=255;
+            currentColor3a+=0;
+        }
+        if(colorClicker1===2.5) {
+            currentColor1a+=0;
+            currentColor2a+=255;
+            currentColor3a+=0;
+        }
+        if(colorClicker1===3.5) {
+                currentColor1a+=0;
+                currentColor2a+=0;
+                currentColor3a+=255;
+        }
+        if(colorClicker1===4.5) {
+                currentColor1a+=0;
+                currentColor2a+=0;
+                currentColor3a+=0;
+        }
+        if(colorClicker1===0) {
+            currentColor1a+=255;
+            currentColor2a+=255;
+            currentColor3a+=255;
+        }
+    };
+
+    keyPressed = function() {
+        if(numTokens >= 4 && keyCode === 10) {
+            correction1(tokenY);
+            correction2(tokenY);
+            tokenY-=50;
+            numTokens-=4;
+            colorClicker1=0;
+            colorClicker2=0;
+            colorClicker3=0;
+            colorClicker4=0;
+        }
+    };
+};
+
+
+</script>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
