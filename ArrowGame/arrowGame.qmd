@@ -5,28 +5,32 @@ function setup() {
   }
 
 // Y - position variables
-let y1 = -580;
-let y2 = -480;
-let y3 = -380;
-let y4 = -280;
-let y5 = -180;
-let y6 = -80;
+var y1 = -580;
+var y2 = -480;
+var y3 = -380;
+var y4 = -280;
+var y5 = -180;
+var y6 = -80;
 
 // Arrow type variables
-let type1 = random(0, 4);
-let type2 = random(0, 4);
-let type3 = random(0, 4);
-let type4 = random(0, 4);
-let type5 = random(0, 4);
-let type6 = random(0, 4);
+var type1 = random(0, 4);
+var type2 = random(0, 4);
+var type3 = random(0, 4);
+var type4 = random(0, 4);
+var type5 = random(0, 4);
+var type6 = random(0, 4);
+
+// Scoring
+var points = 0;
+var outline = [0, 0, 0];
 
 draw = function() {
     
   background(134, 190, 227);
 
-  let outline1 = stroke(0, 0, 0);
+  var outline1 = stroke(0, 0, 0);
 
-  // Game setup and structure
+  // Game setup
   stroke(0, 0, 0);
   strokeWeight(5);
   line(150, 0, 150, 600);
@@ -34,10 +38,17 @@ draw = function() {
   line(450, 0, 450, 600);
   strokeWeight(90);
   line(0, 540, 600, 540);
+  fill(134, 190, 227);
+  strokeWeight(5);
+  rect(10, 10, 50, 50, 10);
+  fill(0, 0, 0);
+  textSize(30);
+  text(points, 20, 46);
+  
 
   // Up, right, down, and left arrows
-  up = function(y) {
-    stroke(0, 0, 0);
+  var up = function(y) {
+    stroke(outline[0], outline[1], outline[2]);
     strokeWeight(30);
     noFill();
     line(75, y, 75, y + 55);
@@ -51,7 +62,7 @@ draw = function() {
     line(75, y, 95, y + 20);
   };
 
-  right = function(y) {
+  var right = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
@@ -66,7 +77,7 @@ draw = function() {
     line(252, y + 27, 232, y + 07);
   };
 
-  down = function(y) {
+  var down = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
@@ -81,7 +92,7 @@ draw = function() {
     line(375, y + 55, 395, y + 35);
   };
 
-  left = function(y) {
+  var left = function(y) {
     stroke(0, 0, 0);
     strokeWeight(30);
     noFill();
@@ -99,9 +110,24 @@ draw = function() {
   // Random arrows at 1st y-position
   if(type1 <= 1) {
     up(y1);
+    keyPressed = function() {
+        if(keyCode === 38 && y1 > 495 && y1 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type1 > 1 && type1 <= 2) {
     right(y1);
+    up(y1);
+    keyPressed = function() {
+        if(keyCode === 39 && y1 > 495 && y1 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type1 > 2 && type1 <= 3) {
     down(y1);
@@ -113,9 +139,23 @@ draw = function() {
   // Random arrows at 2nd y-position
   if(type2 <= 1) {
     up(y2);
+    keyPressed = function() {
+        if(keyCode === 38 && y2 > 495 && y2 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type2 > 1 && type2 <= 2) {
     right(y2);
+    keyPressed = function() {
+        if(keyCode === 39 && y2 > 495 && y2 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type2 > 2 && type2 <= 3) {
     down(y2);
@@ -127,9 +167,23 @@ draw = function() {
   // Random arrows at 3rd y-position
   if(type3 <= 1) {
     up(y1);
+    keyPressed = function() {
+        if(keyCode === 38 && y3 > 495 && y3 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type3 > 1 && type3 <= 2) {
-    right(y1);
+    right(y3);
+    keyPressed = function() {
+        if(keyCode === 39 && y3 > 495 && y3 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type3 > 2 && type3 <= 3) {
     down(y1);
@@ -141,9 +195,23 @@ draw = function() {
   // Random arrows at 4th y-position
   if(type4 <= 1) {
     up(y4);
+    keyPressed = function() {
+        if(keyCode === 38 && y4 > 495 && y4 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type4 > 1 && type4 <= 2) {
     right(y4);
+    keyPressed = function() {
+        if(keyCode === 39 && y4 > 495 && y4 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type4 > 2 && type4 <= 3) {
     down(y4);
@@ -155,9 +223,23 @@ draw = function() {
   // Random arrows at 5th y-position
   if(type5 <= 1) {
     up(y1);
+    keyPressed = function() {
+        if(keyCode === 38 && y5 > 495 && y5 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type5 > 1 && type5 <= 2) {
     right(y5);
+    keyPressed = function() {
+        if(keyCode === 39 && y5 > 495 && y5 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type5 > 2 && type5 <= 3) {
     down(y5);
@@ -169,9 +251,23 @@ draw = function() {
   // Random arrows at 6th y-position
   if(type6 <= 1) {
     up(y6);
+    keyPressed = function() {
+        if(keyCode === 38 && y6 > 495 && y6 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type6 > 1 && type6 <= 2) {
     right(y6);
+    keyPressed = function() {
+        if(keyCode === 39 && y6 > 495 && y6 < 585) {
+            points += 1;
+            outline = [255, 255, 255];
+
+        }
+    };
   }
   if(type6 > 2 && type6 <= 3) {
     down(y6);
@@ -203,21 +299,27 @@ draw = function() {
   // Arrow repeat sequence
   if(y1 > 680) {
     y1 -= 700;
+    outline = [0, 0, 0];
   }
   if(y2 > 680) {
     y2 -= 700;
+    outline = [0, 0, 0];
   }
   if(y3 > 680) {
     y3 -= 700;
+    outline = [0, 0, 0];
   }
   if(y4 > 680) {
     y4 -= 700;
+    outline = [0, 0, 0];
   }
   if(y5 > 680) {
     y5 -= 700;
+    outline = [0, 0, 0];
   }
   if(y6 > 680) {
     y6 -= 700;
+    outline = [0, 0, 0];
   }
 
 };
