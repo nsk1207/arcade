@@ -3,18 +3,34 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
-     <style>
+      <style>
         h1 {
           text-align: center;
           font-size: 40px;
           font-weight: 700;
           color: #fcf6d9;
           font-family: 'Verdana'
+           }
+        button {
+          outline: none;
+          font-size: 20px;
+          margin-top: 4%; 
+          margin-bottom: 4%;
+          position: inline;
+          width: 40%;
+          margin-left: 30%;
+          margin-right: 30%;
+          padding: 2%;
+          background-color: #A9A9A9;
+          color: #DCDCDC;
+          font-family: 'Verdana'
         }
         input.login {
           margin-top: 5%;
           position: inline;
-          width: 50%
+          width: 50%;
+          margin-left: 25%;
+          margin-right: 30%;
           padding: 2%;
           font-size: 25px;
           background-color: #242424;
@@ -24,24 +40,14 @@
           font-family: 'Verdana';
           text-align:center
         }
-        input.loginfocus {
+        input.signup {
           background-color: #4d4c4b;
           outline: none;
         }
-        button {
-          outline: none;
-          -webkit-tap-highlight-color: transparent;
-          font-size: 20px;
-          position: inline;
-          width: 40%;
-          margin-left: 30%;
-          margin-right: 30%;
-          color: #DCDCDC;
-          border: #32CD32;
-          font-family: 'Verdana'
-        }
         div.signup {
           margin-top: 4%;
+          margin-left: 25%;
+          margin-right: 25%;
           position: inline;
           width: 50%;
         }
@@ -51,9 +57,10 @@
           margin-bottom: 0%;   
           font-family: 'Verdana'     
         }
-    </style>
-    
-  </head>
+
+  </style>
+
+ </head>
   <body>
     <h1 class="header">Sign In</h1>
     <input type="name" class="login" id="name" placeholder="Type a Username">
@@ -91,6 +98,7 @@ $('#enter').click(async function() {
         else {
             console.log("Login Failed");
         }
+<<<<<<< HEAD
     } catch(error) {
         console.log(error);
         document.getElementById("SignInError").style.display = "block";
@@ -98,3 +106,7 @@ $('#enter').click(async function() {
 });
 
 </script> -->
+=======
+      });
+    </script> 
+>>>>>>> 67c7a6fee3ba8fff34d60476ef7c0729e0e17242

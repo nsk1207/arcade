@@ -10,6 +10,20 @@
           font-weight: 700;
           color: #fcf6d9;
           font-family: 'Verdana'
+           }
+        button {
+          outline: none;
+          font-size: 20px;
+          margin-top: 4%; 
+          margin-bottom: 4%;
+          position: inline;
+          width: 40%;
+          margin-left: 30%;
+          margin-right: 30%;
+          padding: 2%;
+          background-color: #A9A9A9;
+          color: #DCDCDC;
+          font-family: 'Verdana'
         }
         input.login {
           margin-top: 5%;
@@ -22,29 +36,12 @@
           background-color: #242424;
           color: #fcf6d9;
           border: none;
-          border-radius: 5px;
           position: inline;
           font-family: 'Verdana'
         }
-        input.loginfocus {
+        input.signup {
           background-color: #4d4c4b;
           outline: none;
-        }
-        button {
-          outline: none;
-          -webkit-tap-highlight-color: transparent;
-          font-size: 20px;
-          margin-top: 4%; 
-          margin-bottom: 4%;
-          position: inline;
-          width: 40%;
-          margin-left: 30%;
-          margin-right: 30%;
-          padding: 2%;
-          border-radius: 8px;
-          background-color: #A9A9A9;
-          color: #DCDCDC;
-          font-family: 'Verdana'
         }
         div.signup {
           margin-top: 4%;
@@ -59,20 +56,21 @@
           margin-bottom: 0%;   
           font-family: 'Verdana'     
         }
-    </style>
+
+  </style>
 
   </head>
   <body>
     <h1 class="header"> Sign Up Here! </h1>
-    <input type="username" class="login" id="usrnm" placeholder="Username">
-    <input type="name" class="login" id="name" placeholder="Your Full Name">
-    <input type="password" class="login" id="pswd" placeholder="Password">
+    <input type="username" class="login" id="username" placeholder="Username">
+    <input type="password" class="login" id="password" placeholder="Password">
     <div>
     <br>
       <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';">Create Account</button>
       <div class="sign">
+      
   <script>
-      var input = document.getElementById("pswdv");
+      var input = document.getElementById("password");
       input.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
           event.preventDefault();

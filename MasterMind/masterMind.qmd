@@ -1,4 +1,4 @@
-// Based off of the game mastermind 
+<script>
 
 // Game board
 background(255, 223, 219);
@@ -151,7 +151,6 @@ draw = function() {
     };
 
     mousePressed = function() {
-        
         if(mouseX>25 && mouseX<65 && mouseY>tokenY-20 && mouseY<tokenY+20) {
             if(colorClicker1===0 || colorClicker1===0.5) {
                 fill(255, 0, 0);
@@ -310,3 +309,6 @@ draw = function() {
         }
     };
 };
+
+
+</script>
