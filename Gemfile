@@ -4,4 +4,4 @@ source "https://rubygems.org"
 
 gem "jekyll-theme-midnight", group: :jekyll_plugins
 gem "github-pages", group: :jekyll_plugins
-
+gem 'jekyll-theme-hacker', '~> 0.2.0'
