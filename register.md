@@ -62,11 +62,11 @@
   </head>
   <body>
     <h1 class="header"> Sign Up Here! </h1>
-    <input type="username" class="login" id="username" placeholder="Username">
-    <input type="password" class="login" id="password" placeholder="Password">
+    <input type="username" class="login" id="username" placeholder="Type a Username">
+    <input type="password" class="login" id="password" placeholder="Type a Password">
     <div>
     <br>
-      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';">Create Account</button>
+      <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/searchgames';">Create Account</button>
       <div class="sign">
       
   <script>

@@ -1,5 +1,7 @@
 # Our Manifesto
 
+Hi, we are team NASH (Nathan, Alyssa, Sabine, and Haseeb!).
+
 Our manifesto will be the overarching principles that we need as a team to be successful. It is as follows:
 
 COMMUNICATION over COMPLETION: Things can easily be completed without communicating. However, this creates uncoordinated work, can cause individuals to do unecessary work, and can impact the general quality of the work completed. As a team, we will prioritize talking about our goals and the work we mean to complete over completing it as fast as possible without talking about what we all need to do.

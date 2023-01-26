@@ -1,20 +1,93 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+    table a {
+        display: block;
+        padding: 5px;
+        color: dodgerblue;
+        background-color: rgb(0, 255, 213);
+        }
+
+    table a:hover, a:focus {
+        display: block;
+        padding: 5px;
+        color: white;
+        background-color: dodgerblue;
+    }
+
+    td {
+        width: 180px;
+    }
+
+    .menu ul, .menu li {
+        margin: 0px;
+        padding: 0px;
+        list-style: none
+    }
+
+    .menu li {
+        float: right;
+        display: inline;
+        position: relative;
+        width: 180px;
+    }
+
+    .menu ul.menus {
+        width: 180px;
+        position: absolute;
+        display: none;
+    }
+
+    .menu ul.menus li {
+        display: block;
+        top: 5px;
+        width: 100%;
+    }
+
+    .menu li:hover ul.menus {
+        display: block
+    }
+
+    .menu ul.menus .submenu {
+        display: none;
+        position: absolute;
+        right: 180px;
+        width: 180px;
+        top: -5px;
+    }
+
+    .menu ul.menus .has-submenu:hover .submenu {
+        display: block;
+    }
+
+</style>
+</head>
+<body>
 <table>
     <tr>
-        <td><a href="/login.html"><center>ACCOUNT</center></a></td>
-    </tr>
-    <tr>
-        <td><a href="/pong.html"><center>PLAY PONG HERE</center></a></td>
+        <center>
+        <td><a href="{{ site.baseurl }}/">Home Page</a></td>
+        <td><a href="{{ site.baseurl }}/games.html">Games</a></td>
+        <td><a href="{{ site.baseurl }}/searchgames.html">Search Games</a></td>
+        <td><a href="{{ site.baseurl }}/login.html">Login/Register</a></td>
+        <td><a href="{{ site.baseurl }}/leaderboard.html">Leaderboard</a></td>
+        </center>
+        <td>
+            <nav>
+            <ul class='menu'>
+              <li><a class='prett' href='#'>About Us</a>
+                  <ul class='menus'>
+                  <li><a href='{{ site.baseurl }}/manifesto'>Manifesto/Bio</a></li>
+                  <li><a href='{{ site.baseurl }}/visionboard'>Vision Board</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </td>
     </tr>
 </table>
-
-<center>
-<form>
-    <label for="page-selector">Extra:</label>
-    <select id="page-selector" onchange="location = this.value;">
-      <option value="#">Select an option</option>
-      <option value="aboutus.html">About Us</option>
-      <option value="manifesto.html">Our Manifesto</option>
-      <option value="visionboard.html">Vision Board</option>
-    </select>
-  </form>
-</center>
+</body>
+</html>
