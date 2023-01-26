@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>arrowgame</title>
+<title>login</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,16 +23,16 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="arrowGame_files/libs/clipboard/clipboard.min.js"></script>
-<script src="arrowGame_files/libs/quarto-html/quarto.js"></script>
-<script src="arrowGame_files/libs/quarto-html/popper.min.js"></script>
-<script src="arrowGame_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="arrowGame_files/libs/quarto-html/anchor.min.js"></script>
-<link href="arrowGame_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="arrowGame_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="arrowGame_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="arrowGame_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="arrowGame_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="login_files/libs/clipboard/clipboard.min.js"></script>
+<script src="login_files/libs/quarto-html/quarto.js"></script>
+<script src="login_files/libs/quarto-html/popper.min.js"></script>
+<script src="login_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="login_files/libs/quarto-html/anchor.min.js"></script>
+<link href="login_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="login_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="login_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="login_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="login_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -45,233 +45,90 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+&lt;html lang=“{{ site.lang | default:”en-US” }}“&gt;
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+Login
+</title>
+<style>
+        h1 {
+          text-align: center;
+          font-size: 40px;
+          font-weight: 700;
+          color: #fcf6d9;
+          font-family: 'Verdana'
+           }
+        button {
+          outline: none;
+          font-size: 20px;
+          margin-top: 4%; 
+          margin-bottom: 4%;
+          position: inline;
+          width: 40%;
+          margin-left: 30%;
+          margin-right: 30%;
+          padding: 2%;
+          background-color: #A9A9A9;
+          color: #DCDCDC;
+          font-family: 'Verdana'
+        }
+        input.login {
+          margin-top: 5%;
+          position: inline;
+          width: 50%;
+          margin-left: 25%;
+          margin-right: 30%;
+          padding: 2%;
+          font-size: 25px;
+          background-color: #242424;
+          color: #fcf6d9;
+          border: none;
+          position: inline;
+          font-family: 'Verdana'
+        }
+        input.signup {
+          background-color: #4d4c4b;
+          outline: none;
+        }
+        div.signup {
+          margin-top: 4%;
+          margin-left: 25%;
+          margin-right: 25%;
+          position: inline;
+          width: 50%;
+        }
+        #sign {
+          font-size: 25px;
+          text-align: center;
+          margin-bottom: 0%;   
+          font-family: 'Verdana'     
+        }
+
+  </style>
+
+
+<h1 class="header">
+Sign In
+</h1>
+<input type="username" class="login" id="usrnm" placeholder="Type a Username"> <input type="password" class="login" id="pswd" placeholder="Type a Password">
+<div>
+<pre><code>&lt;br&gt;
+  &lt;button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';"&gt;Enter&lt;/button&gt;
+  &lt;button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/register';"&gt;Register&lt;/button&gt;
+  &lt;div class="noacc"&gt;</code></pre>
 <script>
+      var input = document.getElementById("pswd");
+      input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("enter").click();
+        }
+      });
+    </script>
 
-function setup() {
-    createCanvas(600, 600);
-  }
-
-// Y - position variables
-let y1 = -580;
-let y2 = -480;
-let y3 = -380;
-let y4 = -280;
-let y5 = -180;
-let y6 = -80;
-
-// Arrow type variables
-let type1 = random(0, 4);
-let type2 = random(0, 4);
-let type3 = random(0, 4);
-let type4 = random(0, 4);
-let type5 = random(0, 4);
-let type6 = random(0, 4);
-
-draw = function() {
-    
-  background(134, 190, 227);
-
-  let outline1 = stroke(0, 0, 0);
-
-  // Game setup and structure
-  stroke(0, 0, 0);
-  strokeWeight(5);
-  line(150, 0, 150, 600);
-  line(300, 0, 300, 600);
-  line(450, 0, 450, 600);
-  strokeWeight(90);
-  line(0, 540, 600, 540);
-
-  // Up, right, down, and left arrows
-  up = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(75, y, 75, y + 55);
-    line(75, y, 55, y + 20);
-    line(75, y, 95, y + 20);
-    stroke(127, 99, 219);
-    strokeWeight(20);
-    noFill();
-    line(75, y, 75, y + 55);
-    line(75, y, 55, y + 20);
-    line(75, y, 95, y + 20);
-  };
-
-  right = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(192, y + 27, 252, y + 27);
-    line(252, y + 27, 232, y + 47);
-    line(252, y + 27, 232, y + 07);
-    stroke(146, 214, 107);
-    strokeWeight(20);
-    noFill();
-    line(192, y + 27, 252, y + 27);
-    line(252, y + 27, 232, y + 47);
-    line(252, y + 27, 232, y + 07);
-  };
-
-  down = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(375, y, 375, y + 55);
-    line(375, y + 55, 355, y + 35);
-    line(375, y + 55, 395, y + 35);
-    stroke(219, 175, 210);
-    strokeWeight(20);
-    noFill();
-    line(375, y, 375, y + 55);
-    line(375, y + 55, 355, y + 35);
-    line(375, y + 55, 395, y + 35);
-  };
-
-  left = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(492, y + 27, 552, y + 27);
-    line(492, y + 27, 512, y + 47);
-    line(492, y + 27, 512, y + 07);
-    stroke(255, 204, 0);
-    strokeWeight(20);
-    noFill();
-    line(492, y + 27, 552, y + 27);
-    line(492, y + 27, 512, y + 47);
-    line(492, y + 27, 512, y + 07);
-  };
-
-  // Random arrows at 1st y-position
-  if(type1 <= 1) {
-    up(y1);
-  }
-  if(type1 > 1 && type1 <= 2) {
-    right(y1);
-  }
-  if(type1 > 2 && type1 <= 3) {
-    down(y1);
-  }
-  if(type1 > 3 && type1 <= 4) {
-    left(y1);
-  }
-
-  // Random arrows at 2nd y-position
-  if(type2 <= 1) {
-    up(y2);
-  }
-  if(type2 > 1 && type2 <= 2) {
-    right(y2);
-  }
-  if(type2 > 2 && type2 <= 3) {
-    down(y2);
-  }
-  if(type2 > 3 && type2 <= 4) {
-    left(y2);
-  }
-
-  // Random arrows at 3rd y-position
-  if(type3 <= 1) {
-    up(y1);
-  }
-  if(type3 > 1 && type3 <= 2) {
-    right(y1);
-  }
-  if(type3 > 2 && type3 <= 3) {
-    down(y1);
-  }
-  if(type3 > 3 && type3 <= 4) {
-    left(y1);
-  }
-
-  // Random arrows at 4th y-position
-  if(type4 <= 1) {
-    up(y4);
-  }
-  if(type4 > 1 && type4 <= 2) {
-    right(y4);
-  }
-  if(type4 > 2 && type4 <= 3) {
-    down(y4);
-  }
-  if(type4 > 3 && type4 <= 4) {
-    left(y4);
-  }
-
-  // Random arrows at 5th y-position
-  if(type5 <= 1) {
-    up(y1);
-  }
-  if(type5 > 1 && type5 <= 2) {
-    right(y5);
-  }
-  if(type5 > 2 && type5 <= 3) {
-    down(y5);
-  }
-  if(type5 > 3 && type5 <= 4) {
-    left(y5);
-  }
-
-  // Random arrows at 6th y-position
-  if(type6 <= 1) {
-    up(y6);
-  }
-  if(type6 > 1 && type6 <= 2) {
-    right(y6);
-  }
-  if(type6 > 2 && type6 <= 3) {
-    down(y6);
-  }
-  if(type6 > 3 && type6 <= 4) {
-    left(y6);
-  }
-
-  // Arrow movement
-  if(y1 < 700) {
-    y1 += 3;
-  }
-  if(y2 < 700) {
-    y2 += 3;
-  }
-  if(y3 < 700) {
-    y3 += 3;
-  }
-  if(y4 < 700) {
-    y4 += 3;
-  }
-  if(y5 < 700) {
-    y5 += 3;
-  }
-  if(y6 < 700) {
-    y6 += 3;
-  }
-
-  // Arrow repeat sequence
-  if(y1 > 680) {
-    y1 -= 700;
-  }
-  if(y2 > 680) {
-    y2 -= 700;
-  }
-  if(y3 > 680) {
-    y3 -= 700;
-  }
-  if(y4 > 680) {
-    y4 -= 700;
-  }
-  if(y5 > 680) {
-    y5 -= 700;
-  }
-  if(y6 > 680) {
-    y6 -= 700;
-  }
-
-};
-
-</script>
-
-</main>
+</div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

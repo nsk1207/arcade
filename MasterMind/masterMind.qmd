@@ -308,6 +308,45 @@ draw = function() {
             colorClicker4=0;
         }
     };
+    // Generate the correct color sequence
+    var correctSequence = [    
+        color(color1[randomColor1a], color2[randomColor2a], color3[randomColor3a]),
+        color(color1[randomColor1b], color2[randomColor2b], color3[randomColor3b]),
+        color(color1[randomColor1c], color2[randomColor2c], color3[randomColor3c]),
+        color(color1[randomColor1d], color2[randomColor2d], color3[randomColor3d])
+    ];
+
+    // Prompt user for their guess
+    var guess = [];
+    for (var i = 0; i < 4; i++) {
+        guess[i] = color(prompt("Enter a color for position " + (i+1)));
+    }
+
+    // Initialize feedback variables
+    var blackPegs = 0;
+    var whitePegs = 0;
+
+    // Check for correct colors in correct position
+    for (var i = 0; i < 4; i++) {
+        if (guess[i] == correctSequence[i]) {
+            blackPegs++;
+        }
+    }
+
+    // Check for correct colors in incorrect position
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (guess[i] == correctSequence[j] && i != j) {
+                whitePegs++;
+                break;
+            }
+        }
+    }
+
+    // Print feedback to the user
+    println("Black pegs: " + blackPegs);
+    println("White pegs: " + whitePegs);
+
 };
 
 

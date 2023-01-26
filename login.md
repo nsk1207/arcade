@@ -37,7 +37,8 @@
           color: #fcf6d9;
           border: none;
           position: inline;
-          font-family: 'Verdana'
+          font-family: 'Verdana';
+          text-align:center
         }
         input.signup {
           background-color: #4d4c4b;
@@ -62,19 +63,50 @@
  </head>
   <body>
     <h1 class="header">Sign In</h1>
-    <input type="username" class="login" id="usrnm" placeholder="Type a Username">
-    <input type="password" class="login" id="pswd" placeholder="Type a Password">
+    <input type="name" class="login" id="name" placeholder="Type a Username">
+    <input type="pwd" class="login" id="pwd" placeholder="Type a Password">
     <div>
     <br>
       <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/pong';">Enter</button>
       <button id="enter" type="button" onclick="window.location.href='{{ site.baseurl }}/register';">Register</button>
       <div class="noacc">
-  <script>
-      var input = document.getElementById("pswd");
-      input.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          document.getElementById("enter").click();
+
+<!-- <script>
+$('#enter').click(async function() {
+    let username = $('#login_username').val();
+    let email = $('#login_email').val();
+    let pwd = $('#pwd').val();
+    let url = '/api/users'; 
+
+
+    const headers = {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: {'Content-Type': 'application/json'},
+    };
+    try {
+        const response = await fetch(url, headers);
+        if (!response.ok) {
+            throw new Error("Login Failed");
         }
+        const data = await response.json();
+        const user = data.users.find(user => user.username === username && user.password === password && user.email === email);
+        if (user) {
+            console.log("Login Successful");
+        } 
+        else {
+            console.log("Login Failed");
+        }
+<<<<<<< HEAD
+    } catch(error) {
+        console.log(error);
+        document.getElementById("SignInError").style.display = "block";
+    }
+});
+
+</script> -->
+=======
       });
     </script> 
+>>>>>>> 67c7a6fee3ba8fff34d60476ef7c0729e0e17242
