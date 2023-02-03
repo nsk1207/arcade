@@ -22,7 +22,7 @@
           margin-right: 30%;
           padding: 2%;
           background-color: #A9A9A9;
-          color: #DCDCDC;
+          color: #DCDCDD;
           font-family: 'Verdana'
         }
         input.login {
