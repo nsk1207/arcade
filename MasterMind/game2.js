@@ -136,21 +136,17 @@ draw = function() {
     line(18, tokenY, 12, tokenY+5);
     strokeWeight(2);
 
-    var correction1 = function(y) {
+    var white = function(y) {
         noStroke();
         fill(0, 0, 0);
         ellipse(300, y, 15, 15);
     
     };
-    var correction2 = function(y) {
+    var black = function(y) {
         noStroke();
         fill(255, 255, 255);
         ellipse(300, y, 15, 15);
-    };
-    var correction3 = function() {
-    };
-    var correction4 = function() {
-    };
+    }
 
     mousePressed = function() {
         if(mouseX>25 && mouseX<65 && mouseY>tokenY-20 && mouseY<tokenY+20) {
@@ -300,8 +296,8 @@ draw = function() {
 
     keyPressed = function() {
         if(numTokens >= 4 && keyCode === 10) {
-            correction1(tokenY);
-            correction2(tokenY);
+            black(tokenY);
+            white(tokenY);
             tokenY-=50;
             numTokens-=4;
             colorClicker1=0;
