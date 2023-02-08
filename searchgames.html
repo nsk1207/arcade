@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>arrowgame</title>
+<title>searchgames</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,16 +23,16 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="arrowGame_files/libs/clipboard/clipboard.min.js"></script>
-<script src="arrowGame_files/libs/quarto-html/quarto.js"></script>
-<script src="arrowGame_files/libs/quarto-html/popper.min.js"></script>
-<script src="arrowGame_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="arrowGame_files/libs/quarto-html/anchor.min.js"></script>
-<link href="arrowGame_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="arrowGame_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="arrowGame_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="arrowGame_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="arrowGame_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="searchgames_files/libs/clipboard/clipboard.min.js"></script>
+<script src="searchgames_files/libs/quarto-html/quarto.js"></script>
+<script src="searchgames_files/libs/quarto-html/popper.min.js"></script>
+<script src="searchgames_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="searchgames_files/libs/quarto-html/anchor.min.js"></script>
+<link href="searchgames_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="searchgames_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="searchgames_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="searchgames_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="searchgames_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -45,229 +45,97 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div id="game">
+<p>
+Guess The Word!: <span id="display"></span>
+</p>
+<input type="text" id="guess" onkeypress="handleKeyPress(event)"> <button onclick="checkGuess()">Submit</button> <button onclick="generateWord()">New Word</button>
+<p id="result">
+</p>
+</div>
+<style>
+#game {
+  text-align: center;
+}
+
+#word {
+  font-size: 30px;
+}
+
+#guess {
+  font-size: 20px;
+  margin: 20px;
+}
+
+button {
+  font-size: 25px;
+  margin: 20px;
+  background-color: #005A9C;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005A9C; 
+}
+
+#result {
+  font-size: 20px;
+  margin: 20px;
+}
+</style>
 <script>
+let word = "";
+let hintIndex = 0;
 
-function setup() {
-    createCanvas(600, 600);
-  }
+function generateWord() {
+    // Fetch a new word from the API
+    fetch("https://random-word-api.herokuapp.com/word?number=1")
+        .then(response => response.json())
+        .then(data => {
+            word = data[0];
+            hintIndex = 0;
+            // hide the word to be guessed
+            let hiddenWord = "";
+            for (let i = 0; i < word.length; i++) {
+                hiddenWord += "_";
+            }
+            document.getElementById("display").innerHTML = hiddenWord;
+            document.getElementById("guess").value = "";
+            document.getElementById("result").innerHTML = "";
+        });
+}
 
-// Y - position variables
-let y1 = -580;
-let y2 = -480;
-let y3 = -380;
-let y4 = -280;
-let y5 = -180;
-let y6 = -80;
+function checkGuess() {
+    // Check if the guess is correct
+    let guess = document.getElementById("guess").value;
+    if (guess === word) {
+        document.getElementById("result").innerHTML = "Correct!";
+    } else {
+        document.getElementById("result").innerHTML = "Incorrect.";
+        giveHint();
+    }
+}
 
-// Arrow type variables
-let type1 = random(0, 4);
-let type2 = random(0, 4);
-let type3 = random(0, 4);
-let type4 = random(0, 4);
-let type5 = random(0, 4);
-let type6 = random(0, 4);
+function giveHint() {
+    // reveal one letter of the word
+    let hiddenWord = document.getElementById("display").innerHTML;
+    let hintWord = hiddenWord.split("");
+    hintWord[hintIndex] = word[hintIndex];
+    hintIndex++;
+    document.getElementById("display").innerHTML = hintWord.join("");
+}
 
-draw = function() {
-    
-  background(134, 190, 227);
+function handleKeyPress(event) {
+    // Check the guess when the user presses Enter
+    if (event.key === "Enter") {
+        checkGuess();
+    }
+}
 
-  let outline1 = stroke(0, 0, 0);
-
-  // Game setup and structure
-  stroke(0, 0, 0);
-  strokeWeight(5);
-  line(150, 0, 150, 600);
-  line(300, 0, 300, 600);
-  line(450, 0, 450, 600);
-  strokeWeight(90);
-  line(0, 540, 600, 540);
-
-  // Up, right, down, and left arrows
-  up = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(75, y, 75, y + 55);
-    line(75, y, 55, y + 20);
-    line(75, y, 95, y + 20);
-    stroke(127, 99, 219);
-    strokeWeight(20);
-    noFill();
-    line(75, y, 75, y + 55);
-    line(75, y, 55, y + 20);
-    line(75, y, 95, y + 20);
-  };
-
-  right = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(192, y + 27, 252, y + 27);
-    line(252, y + 27, 232, y + 47);
-    line(252, y + 27, 232, y + 07);
-    stroke(146, 214, 107);
-    strokeWeight(20);
-    noFill();
-    line(192, y + 27, 252, y + 27);
-    line(252, y + 27, 232, y + 47);
-    line(252, y + 27, 232, y + 07);
-  };
-
-  down = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(375, y, 375, y + 55);
-    line(375, y + 55, 355, y + 35);
-    line(375, y + 55, 395, y + 35);
-    stroke(219, 175, 210);
-    strokeWeight(20);
-    noFill();
-    line(375, y, 375, y + 55);
-    line(375, y + 55, 355, y + 35);
-    line(375, y + 55, 395, y + 35);
-  };
-
-  left = function(y) {
-    stroke(0, 0, 0);
-    strokeWeight(30);
-    noFill();
-    line(492, y + 27, 552, y + 27);
-    line(492, y + 27, 512, y + 47);
-    line(492, y + 27, 512, y + 07);
-    stroke(255, 204, 0);
-    strokeWeight(20);
-    noFill();
-    line(492, y + 27, 552, y + 27);
-    line(492, y + 27, 512, y + 47);
-    line(492, y + 27, 512, y + 07);
-  };
-
-  // Random arrows at 1st y-position
-  if(type1 <= 1) {
-    up(y1);
-  }
-  if(type1 > 1 && type1 <= 2) {
-    right(y1);
-  }
-  if(type1 > 2 && type1 <= 3) {
-    down(y1);
-  }
-  if(type1 > 3 && type1 <= 4) {
-    left(y1);
-  }
-
-  // Random arrows at 2nd y-position
-  if(type2 <= 1) {
-    up(y2);
-  }
-  if(type2 > 1 && type2 <= 2) {
-    right(y2);
-  }
-  if(type2 > 2 && type2 <= 3) {
-    down(y2);
-  }
-  if(type2 > 3 && type2 <= 4) {
-    left(y2);
-  }
-
-  // Random arrows at 3rd y-position
-  if(type3 <= 1) {
-    up(y1);
-  }
-  if(type3 > 1 && type3 <= 2) {
-    right(y1);
-  }
-  if(type3 > 2 && type3 <= 3) {
-    down(y1);
-  }
-  if(type3 > 3 && type3 <= 4) {
-    left(y1);
-  }
-
-  // Random arrows at 4th y-position
-  if(type4 <= 1) {
-    up(y4);
-  }
-  if(type4 > 1 && type4 <= 2) {
-    right(y4);
-  }
-  if(type4 > 2 && type4 <= 3) {
-    down(y4);
-  }
-  if(type4 > 3 && type4 <= 4) {
-    left(y4);
-  }
-
-  // Random arrows at 5th y-position
-  if(type5 <= 1) {
-    up(y1);
-  }
-  if(type5 > 1 && type5 <= 2) {
-    right(y5);
-  }
-  if(type5 > 2 && type5 <= 3) {
-    down(y5);
-  }
-  if(type5 > 3 && type5 <= 4) {
-    left(y5);
-  }
-
-  // Random arrows at 6th y-position
-  if(type6 <= 1) {
-    up(y6);
-  }
-  if(type6 > 1 && type6 <= 2) {
-    right(y6);
-  }
-  if(type6 > 2 && type6 <= 3) {
-    down(y6);
-  }
-  if(type6 > 3 && type6 <= 4) {
-    left(y6);
-  }
-
-  // Arrow movement
-  if(y1 < 700) {
-    y1 += 3;
-  }
-  if(y2 < 700) {
-    y2 += 3;
-  }
-  if(y3 < 700) {
-    y3 += 3;
-  }
-  if(y4 < 700) {
-    y4 += 3;
-  }
-  if(y5 < 700) {
-    y5 += 3;
-  }
-  if(y6 < 700) {
-    y6 += 3;
-  }
-
-  // Arrow repeat sequence
-  if(y1 > 680) {
-    y1 -= 700;
-  }
-  if(y2 > 680) {
-    y2 -= 700;
-  }
-  if(y3 > 680) {
-    y3 -= 700;
-  }
-  if(y4 > 680) {
-    y4 -= 700;
-  }
-  if(y5 > 680) {
-    y5 -= 700;
-  }
-  if(y6 > 680) {
-    y6 -= 700;
-  }
-
-};
+// Initialize the game with a word
+generateWord();
 
 </script>
 
