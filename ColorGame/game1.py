@@ -1,11 +1,11 @@
 def adjust_difficulty(score):
-    difficulty = 1
+    difficulty = 50
     if score >= 100:
-        difficulty = 2
+        difficulty = 40
     if score >= 500:
-        difficulty = 3
+        difficulty = 30
     if score >= 1000:
-        difficulty = 4
+        difficulty = 20
     return difficulty
 
 from flask import Flask, request
