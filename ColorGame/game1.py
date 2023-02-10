@@ -58,3 +58,9 @@ def get_score(player_id):
         print("Failed to retrieve score: {}".format(response.text))
         return None
 
+# Curl command to udpate players score:
+# curl -X POST -F player_id=player1 -F score=100 http://localhost:5000/score
+
+# Curl command to retrieve players score:
+# curl http://localhost:5000/score/player1
+
