@@ -92,7 +92,7 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 5px;
-}
+} 
 
 .square {
   border: 2px solid green;
