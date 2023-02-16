@@ -136,8 +136,7 @@ function setup() {
 
 
   // API endpoints for adding a new score to the leaderboard, getting a list of the top scores, 
-  // and getting a player's score. Here's an example implementation in Node.js using the Express 
-  // framework:
+  // and getting a player's score. 
   
   const express = require('express');
   const mysql = require('mysql');
@@ -148,7 +147,6 @@ function setup() {
   const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'password',
     database: 'leaderboard'
   });
   
