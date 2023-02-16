@@ -146,6 +146,7 @@
       const RIGHT_KEY = 39;
       const UP_KEY = 38;
       const DOWN_KEY = 40;
+      const A_KEY = 56;
       
     // Prevent the snake from reversing
     
@@ -172,8 +173,10 @@
         dx = 0;
         dy = 10;
       }
-      else clear_board();
+      if (keyPressed === A_KEY && !goingUp) {
+        return {'message': 'what are you doing bro that is not even an applicable key'}, 210
     }
+  }
 
     function move_snake() 
       // Create the new Snake's head

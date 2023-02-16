@@ -1,73 +1,26 @@
-// REST API implemented in Node.js with Express framework and MongoDB to store player scores:
-
-// Explaination:
-/*
-The first line imports the Flask module.
-
-Next, an instance of the Flask class is created and the variable app is assigned to it.
-
-The line app = Flask(__name__) is creating a new Flask application instance. The 
-__name__ argument passed to the Flask class is a Python predefined variable that gives the 
-name of the current module, which is used to resolve resources relative to the module.
-
-The line app.route('/player/<player_name>/score', methods=['POST']) is a decorator that specifies
- the URL route and the HTTP methods allowed for the route. In this case, the route is 
- /player/<player_name>/score and only POST requests are allowed, meaning that you can only 
- create a new score entry by sending a POST request to this URL. The <player_name> part of the 
- URL is a placeholder that can be any string and is passed as an argument to the function 
- defined below the decorator.
-
-The function update_score takes in a player_name argument, which is the string that was passed 
-in as part of the URL when the POST request was made. It also takes in a score argument, which 
-is passed as a parameter in the body of the POST request. The function then stores the score for
-the specified player in a Python dictionary called scores.
-
-Finally, the line if __name__ == '__main__': is a common Python idiom that checks if the script 
-is being run as the main program and not imported as a module. If it's being run as the main 
-program, the line app.run() starts the Flask development server, allowing the API to be 
-accessible to client applications.
-*/
 
 const express = require('express');
-const mongoose = require('mongoose');
-const app = express();
-
-// Connect to MongoDB database
-mongoose.connect('mongodb://localhost/playerScores', { useNewUrlParser: true });
-
-// Define player score schema
-const playerScoreSchema = new mongoose.Schema({
-  name: String,
-  score: Number
-});
-
-// Create player score model
-const PlayerScore = mongoose.model('PlayerScore', playerScoreSchema);
-
-// Add player score endpoint
-app.post('/playerScores', (req, res) => {
-  const playerScore = new PlayerScore({
-    name: req.body.name,
-    score: req.body.score
+const snakeFacts = [
+    "Snakes have flexible jaws that allow them to swallow prey much larger than their head.",
+    "Some species of snakes can live for more than 30 years.",
+    "Snakes don't have eyelids, so they can't blink or close their eyes.",
+    "Some species of snakes can fly, or at least glide, through the air.",
+    "Snakes can sense their prey through vibrations in the ground.",
+    "The black mamba is one of the fastest and most venomous snakes in the world.",
+    "Some species of snakes give birth to live young, while others lay eggs.",
+    "The king cobra is the largest venomous snake in the world, reaching lengths of up to 18 feet."
+  ];
+  
+  // Define a route to handle GET requests to /snake-facts
+  app.get('/snake-facts', (req, res) => {
+    // Choose a random fact from the array
+    const randomFact = snakeFacts[Math.floor(Math.random() * snakeFacts.length)];
+    
+    // Send the fact as a JSON response
+    res.json({ fact: randomFact });
   });
-  playerScore.save((err, score) => {
-    if (err) return res.status(500).send(err);
-    return res.status(200).send(score);
+  
+  // Start the server
+  app.listen(3000, () => {
+    console.log('Snake Facts API listening on port 3000');
   });
-});
-
-// Get all player scores endpoint
-app.get('/playerScores', (req, res) => {
-  PlayerScore.find({}, (err, scores) => {
-    if (err) return res.status(500).send(err);
-    return res.status(200).send(scores);
-  });
-});
-
-// Get player score by name endpoint
-app.get('/playerScores/:name', (req, res) => {
-  PlayerScore.findOne({ name: req.params.name }, (err, score) => {
-    if (err) return res.status(500).send(err);
-    return res.status(200).send(score);
-  });
-});
