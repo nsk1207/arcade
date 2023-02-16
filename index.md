@@ -10,6 +10,12 @@
 <style>
       h1 {
         text-align: right;
-        width: 20%;
+        width: 58%;
       }
     </style>
+
+<center>
+
+Here is our gaming website with fun mini games for you to enjoy!
+
+</center>
