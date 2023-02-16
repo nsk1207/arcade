@@ -139,7 +139,7 @@ body {
     mode: 'cors',
     cache: 'default',
     credentials: 'omit',
-    headers: {
+    headers: {  w
       'Content-Type': 'application/json'
     ;}
   };
