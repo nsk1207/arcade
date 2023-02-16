@@ -65,22 +65,22 @@
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
         <div class="the_data">
-        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
-        <p id="user">Username Appears Here</p>
+        <p class="fs-4">Score: <span id="score_value">0</span></p>
+        <p id="user">Username</p>
         </div>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
-            <a id="new_game" class="link-alert">new game</a>
-            <a id="setting_menu" class="link-alert">settings</a>
+            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to start playing</p>
+            <a id="new_game" class="link-alert">New Game</a>
+            <a id="setting_menu" class="link-alert">Settings</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
             <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
-            <a id="new_game1" class="link-alert">new game</a>
-            <a id="setting_menu1" class="link-alert">settings</a>
+            <a id="new_game1" class="link-alert">New Game</a>
+            <a id="setting_menu1" class="link-alert">Settings</a>
         </div>
         <!-- Play Screen -->
         <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
@@ -396,50 +396,50 @@ window.addEventListener("keydown", function(e) {
         }
     })();
 
-// create user
-const url = "https://pythonalflask.tk/api/history"
-const fetchCreate = url + '/createGameHistory';
-const fetchRead = url + '/gameHistoriesList';
+// // create user
+// const url = "https://pythonalflask.tk/api/history"
+// const fetchCreate = url + '/createGameHistory';
+// const fetchRead = url + '/gameHistoriesList';
 
-function create_user(){
-    //Validate Password (must be 6-20 characters in len)
-    //verifyPassword("click");
-    const body = {
-        username: document.getElementById("user").value,
-        score: document.getElementById("score_value").value
-    };
-    const requestOptions = {
-        method: 'POST',
-        body: JSON.stringify(body),
-        headers: {
-            "content-type": "application/json"
-        },
-    };
+// function create_user(){
+//     //Validate Password (must be 6-20 characters in len)
+//     //verifyPassword("click");
+//     const body = {
+//         username: document.getElementById("user").value,
+//         score: document.getElementById("score_value").value
+//     };
+//     const requestOptions = {
+//         method: 'POST',
+//         body: JSON.stringify(body),
+//         headers: {
+//             "content-type": "application/json"
+//         },
+//     };
 
-    // URL for Create API
-    // Fetch API call to the database to create a new user
-    fetch(fetchCreate, requestOptions)
-      .then(response => {
-        // trap error response from Web API
-        if (response.status !== 200) {
-          const errorMsg = 'Database create error: ' + response.status;
-          console.log(errorMsg);
-        //   const tr = document.createElement("tr");
-        //   const td = document.createElement("td");
-        //   td.innerHTML = errorMsg;
-        //   tr.appendChild(td);
-        //   addTable.appendChild(tr);
-          return;
-        }
-        // response contains valid result
-        response.json().then(data => {
-            console.log(data);
-            //add a table row for the new/created userid
-            // add_row(data);
-        })
-    })
-    }
-</script>
+//     // URL for Create API
+//     // Fetch API call to the database to create a new user
+//     fetch(fetchCreate, requestOptions)
+//       .then(response => {
+//         // trap error response from Web API
+//         if (response.status !== 200) {
+//           const errorMsg = 'Database create error: ' + response.status;
+//           console.log(errorMsg);
+//         //   const tr = document.createElement("tr");
+//         //   const td = document.createElement("td");
+//         //   td.innerHTML = errorMsg;
+//         //   tr.appendChild(td);
+//         //   addTable.appendChild(tr);
+//           return;
+//         }
+//         // response contains valid result
+//         response.json().then(data => {
+//             console.log(data);
+//             //add a table row for the new/created userid
+//             // add_row(data);
+//         })
+//     })
+//     }
+// </script>
 
 <table id="recentGames" style="width: 100%;">
   <tr>
