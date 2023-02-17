@@ -130,6 +130,39 @@ body {
   </body>
 </html>
 
+<!-- 
+<script>
+  const url = "http://nashcsp.duckdns.org/api/users/gen"
+  //Options
+  const options = {
+    method: 'GET'
+    mode: 'cors',
+    cache: 'default',
+    credentials: 'omit',
+    headers: {
+      'Content-Type': 'application/json'
+    ;}
+  };
+
+// Fetch
+fetch(url, options)
+  .then(response => {
+    if (response.status !==200) {
+      error('GET API response failure: ' + response.status);
+      return;
+    }
+    response.json().then(data => {
+      for(const event of data) {
+        document.getElementbyId(event.day+2).innerHTML = eventTitle
+      }
+    })
+  })
+.catch(err => {
+  error(err + " " + url);
+});
+
+</script> -->
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   createSquares();
