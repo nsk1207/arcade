@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+:root {
+    background-color: rgb(29, 29, 26);
+    color: lightgreen
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    font-family: 'Nova Square', cursive;
+}
+
+h1 {
+    color: lightgreen;
+    margin-bottom: 5rem;
+    font-size: 5.4rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 4.2rem;
+    margin-bottom: 4rem; 
+}
+
+#question {
+    font-size: 3rem;
+    margin: 2rem;
+}
+
+.choiceContainer {
+    display: flex;
+    margin-bottom: 0.8rem !important; 
+    width: 50%;
+    border-radius: 4px;
+    background: limegreen;
+    font-size: 3rem;
+    min-width: 80rem;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.choiceContainer:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(59, 245, 164);
+    transform: transform 100ms;
+}
+
+.choice-prefix {
+    padding: 2rem 2.5rem;
+    color: white;
+}
+
+.choice-text {
+    padding: 2rem;
+    width: 100%
+}
+
+.correct {
+    background: linear-gradient(32deg, cyan);
+}
+
+.incorrect {
+    background: linear-gradient(32deg, red);
+}
+ 
+#hud {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.quizHead {
+    align-items: center;
+    text-align: center;
+}
+
+#score {
+    font-size: 4rem;
+}
+
+#outOf {
+    font-size: 4rem;
+}
+
+#questionTotal {
+    font-size: 4rem;
+}
+
+
+.hudItem {
+    align-content: center;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 2rem;
+    align-content: center;
+}
+
+.hud-main-text {
+    text-align: center; 
+    align-content: center;
+}
+
+#score {
+    align-content: center;
+    align-items: center;
+    text-align: right;
+}
+
+
+
+#scoreBar {
+    width: 20rem;
+    height: 3rem;
+    border: 0.2rem solid lightgreen;
+    margin-top: 2rem;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.quiz-options {
+    text-align: center;
+    margin: 1rem 0;
+    list-style-type: none;
+    font-size: 2rem;
+}
+
+.quiz-options li{
+    border-radius: 1rem;
+    font-weight: bold;
+    padding: .2rem 2rem;
+    cursor: pointer;
+    border: 3px solid lightgreen;
+    margin: 1rem;
+    box-shadow: 0 2px darkgreen;
+    background-color: rgb(29, 29, 26);
+    display: block;
+}
+
+.quiz-options li:hover{
+    background-color:green;
+    border-color: lightgreen;
+}
+
+.selected{
+    background-color: green !important;
+}
+
+.quiz-foot button{
+    margin: 0, auto !important;
+    text-align: right;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    border-color:green;
+    cursor: pointer;
+    display: block;
+    background-color:lightgreen;
+    letter-spacing: 1.5px;
+    box-shadow: 0 2px darkgreen;
+
+}
+
+.quiz-foot button:active{
+    transform: scale(0.95);
+    color: green;
+}
+
+
+

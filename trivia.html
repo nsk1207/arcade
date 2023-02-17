@@ -1,100 +1,68 @@
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
-
-    :root {
-        background-color: rgb(29, 29, 26);
-    }
-    
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-size: 62.5%;
-        font-family: 'Nova Square', cursive;
-    }
-    
-    h1 {
-        color: limegreen;
-        margin-bottom: 5rem;
-        font-size: 5.4rem;
-    }
-    
-    h2 {
-        font-size: 4.2rem;
-        margin-bottom: 4rem;
-    }
-    
-    
-    .container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-    
-    .flex-column {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .flex-center {
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .justify-center {
-        justify-content: center;
-    }
-    
-    .text-center {
-        text-align: center;
-    }
-    
-    .hidden {
-        display: none;
-    }
-    
-    .btn {
-        font-size: 2.4rem;
-        padding: 2rem 0;
-        width: 30rem;
-        text-align: center; 
-        margin-bottom: 0.5rem;
-        text-decoration: none;
-        color: rgb(28, 26, 26);
-        background: linear-gradient(90deg, rgb(0,255,50) 0%, rgb(0,250,100) 50%, rgba(95, 210, 99) 100%);
-        border-radius: 10px;
-    }
-
-    .btn:hover {
-        cursor: pointer;
-        box-shadow: 0 0.4rem 1.4rem 0 rgba(0,114,224,0.6);
-        transition: transform 150ms;
-        transform: scale(1.03);
-    }
-
-    .btn[disabled]:hover {
-        cursor: not-allowed;
-        box-shadow: none;
-        transform: none;
-    }
-
-    #highscore-btn {
-        background: linear-gradient(90deg, rgb(255,247,9), rgb(240,221,6) 100%);
-    }
-</style>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Page !</title>
-    <link rel="stylesheet" href="s tyle.css">
+    <title>Trivia!</title>
+    <link rel="stylesheet" href="gameStyle.css">
 </head>
+<body class = "flex">
 
-<h1>Good Luck!</h1>
+    <div class="container">
+        <div class="quiz-container" id="game">
+                <div class="quizHead">
+                    <h1 class="quizTitle">Trivia!</h1>
+                    <div class="quiz-score flex">
+                        <span id = "score"></span><span id = "outOf">/</span><span id = questionTotal></span>
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-body">
+                <h1 class = "quiz-question" id="question"><!-- What do we use for the Linux virtual machine on our laptops?--></h1>
+                <ul class = "quiz-options">
+                    <!-- <li>1. WSL</li>
+                    <li>2. JSON</li>
+                    <li>3. Scratch</li>
+                    <li>4. What's a VM?</li>  -->
+                </ul>
+                <div id="result">
+                </div>
+            </div>
+            <div class="quiz-foot">
+                <button type = "button" id = "check-answer">Check Answer</button>
+                <button onClick = "reset()" type = "button" id = "play-again">Play Again</button>
+            </div>
+        </div>
+    </div>
 
+    <script src="game.js"></script>
+
+<script>
+    
+function timer(){
+    if (components.timerStart) {
+        // Set interval is a method used to call a function after every delay, in this case we set a delay for 1 second for each execution.  
+        timer = setInterval(function () {
+            m = parseInt(components.rTime / 60, 10)
+            s = parseInt(components.rTime % 60, 10);
+            sMin = m < 10 ? "0" + m : m;
+            sSec = s < 10 ? "0" + s : s;
+            let watch = document.getElementById("time_remaining");
+            watch.innerHTML = sMin + ":" + sSec;
+            if (--components.rTime < 0) {
+                components.rTime = 180;
+                components.revealMines();
+                setTimeout(() => {
+                    alert("YYou are out of time...!");
+                    components.reset();
+                }, 2);
+            }
+        }, 1000)
+    }
+    
+}
+
+</script>
+</body>
+</html>
