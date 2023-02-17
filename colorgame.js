@@ -1,3 +1,7 @@
+function setup() {
+  createCanvas(400, 400);
+}
+
 // Current Scene
 var currentScene = 0;
 // Time bar movement
@@ -6,36 +10,36 @@ var timeBarX = 0;
 var numCorrect = 5;
 // Random placement
 // Variables to randomly place cloud
-var placementX = round(random(0, 7));
-var placementY = round(random(0, 5));
+var placementX = Math.round(Math.random(0, 7));
+var placementY = Math.round(Math.random(0, 5));
 
 var play=function() {
   background(255, 255, 255);
   // Random color generator
-  var Red = 50+random(205);
-  var Blue = 50+random(205);
-  var Green = 50+random(205);
+  var Red = 50+Math.random(205);
+  var Blue = 50+Math.random(205);
+  var Green = 50+Math.random(205);
   // Scoring
   var scoreSize = 40;
   // Random space generator
   var newX = [24, 74, 124, 174, 224, 274, 324, 374];
   var newY = [75, 135, 195, 255, 315, 375];
   // New x-positions
-  var X0 = round(random(0, 7));
-  var X1 = round(random(-1, 6));
-  var X2 = round(random(-2, 5));
-  var X3 = round(random(-3, 4));
-  var X4 = round(random(-4, 3));
-  var X5 = round(random(-5, 2));
-  var X6 = round(random(-6, 1));
-  var X7 = round(random(-7, 0));
+  var X0 = Math.round(Math.random(0, 7));
+  var X1 = Math.round(Math.random(-1, 6));
+  var X2 = Math.round(Math.random(-2, 5));
+  var X3 = Math.round(Math.random(-3, 4));
+  var X4 = Math.round(Math.random(-4, 3));
+  var X5 = Math.round(Math.random(-5, 2));
+  var X6 = Math.round(Math.random(-6, 1));
+  var X7 = Math.round(Math.random(-7, 0));
   // New y-positions
-  var Y0 = round(random(0, 5));
-  var Y1 = round(random(-1, 4));
-  var Y2 = round(random(-2, 3));
-  var Y3 = round(random(-3, 2));
-  var Y4 = round(random(-4, 1));
-  var Y5 = round(random(-5, 0));
+  var Y0 = Math.round(Math.random(0, 5));
+  var Y1 = Math.round(Math.random(-1, 4));
+  var Y2 = Math.round(Math.random(-2, 3));
+  var Y3 = Math.round(Math.random(-3, 2));
+  var Y4 = Math.round(Math.random(-4, 1));
+  var Y5 = Math.round(Math.random(-5, 0));
   draw= function() {
     // Time Bar
     noStroke();
