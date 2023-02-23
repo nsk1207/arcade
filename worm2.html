@@ -196,14 +196,6 @@
   </script>
 </html>
 
----
-title: Python Sign-in
-layout: default
-description: A sign-in screen that interacts with Python and obtains a user.
-permalink: /data/login
----
-
-{% include nav_data.html %}
 
 <form action="javascript:login_user()">
     <p><label>
@@ -211,8 +203,8 @@ permalink: /data/login
         <input type="text" name="uid" id="uid" required>
     </label></p>
     <p><label>
-        Game score:
-        <input type="game score" name="game score" id="game score" required>
+        Snake score:
+        <input type="snakescore" name="snake score" id="snakescore" required>
     </label></p>
     <p><button>Log</button></p>
     <p id="message"></p>
@@ -220,11 +212,11 @@ permalink: /data/login
 
 <script>
     // URL for deployment
-    var url = "https://flask.nighthawkcodingsociety.com" 
+    var url = "https://nashcsp.duckdns.org" 
     // Comment out next line for local testing
-    //url = "http://localhost:8086"
+    //url = "http://localhost:4444"
     // Authenticate endpoint
-    const login_url = url + '/api/users/authenticate';
+    const login_url = url + '/api/snakes/authenticate';
 
 
     function login_user(){
