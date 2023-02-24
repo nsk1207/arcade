@@ -1,144 +1,125 @@
+---
+title: Classic Snake Game
+layout: base
+description: A pretty advanced use of JavaScript building classic snake game using menu controls, key events, snake simulation and timers.  
+permalink: /frontend/snake
+image: /images/snake.png
+categories: [C4.9]
+tags: [javascript, style, controls, timers]
+week: 16
+type: pbl
+---
+
+{% include nav_frontend.html %}
+
 <style>
+
     body{
     }
     .wrap{
         margin-left: auto;
         margin-right: auto;
     }
+
     canvas{
         display: none;
         border-style: solid;
-        border-width: 15px;
-        border-color: #83E3E6;
+        border-width: 10px;
+        border-color: #FFFFFF;
     }
     canvas:focus{
         outline: none;
     }
+
     /* All screens style */
     #gameover p, #setting p, #menu p{
-        font-size: 25px;
+        font-size: 20px;
     }
+
     #gameover a, #setting a, #menu a{
-        font-size: 25px;
+        font-size: 30px;
         display: block;
     }
+
     #gameover a:hover, #setting a:hover, #menu a:hover{
         cursor: pointer;
     }
+
     #gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
         content: ">";
-        margin-right: 15px;
+        margin-right: 10px;
     }
+
     #menu{
         display: block;
     }
+
     #gameover{
         display: none;
     }
+
     #setting{
         display: none;
     }
+
     #setting input{
         display:none;
     }
+
     #setting label{
         cursor: pointer;
     }
+
     #setting input:checked + label{
-        background-color: #666;
-        color: #AAA;
+        background-color: #FFF;
+        color: #000;
     }
 </style>
 
+
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <p class="fs-4">Score!: <span id="score_value">0</span></p>
+        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>please press <span style="background-color: #83A6E6; color: #000000">space</span> to begin!</p>
-            <a id="new_game" class="link-alert">new game!</a>
-            <a id="setting_menu" class="link-alert">settings!</a>
+            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
+            <a id="new_game" class="link-alert">new game</a>
+            <a id="setting_menu" class="link-alert">settings</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>you lost! press <span style="background-color: #83A6E6; color: #000000">space</span> to try again</p>
-            <form action="javascript:create_user()">
-                <p><label>
-                    User ID:
-                    <input type="text" name="username" id="username" required>
-                </label></p>
-                <p><label>
-                    Score:
-                    <span name="score" id="score">0</span>
-                </label></p>
-                <p>
-                    <button onclick="alert('your score has been sent to the database! thanks so much for playing')">submit</button>
-                </p>
-            </form>
+            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
             <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a>
         </div>
         <!-- Play Screen -->
-        <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
+        <canvas id="snake" class="wrap" width="320" height="320" tabindex="1"></canvas>
         <!-- Settings Screen -->
         <div id="setting" class="py-4 text-light">
-            <p>here are the settings, press <span style="background-color: #6289D1; color: #000000">space</span> to go back to menu</p>
-            <a id="screen_menu" class="link-alert">menu</a>
+            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
+            <a id="new_game2" class="link-alert">new game</a>
             <br>
-            <p><script>
-    var url = "https://nashcsp.duckdns.org" 
-     //url = "http://localhost:4444"
-     // Authenticate endpoint
-    const login_url = url + '/api/snakes/';
-    function login_user()
-        // Set body to include login data
-        const body = {
-            name:document.getElementbyId("name").value
-            uid: document.getElementById("uid").value,
-            snakescore: document.getElementById("snake score").value,
-        };
-        // Set Headers to support cross origin
-        const requestOptions = {
-            method: 'POST',
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            // credentials: 'include', // include, *same-origin, omit
-            body: JSON.stringify(body),
-            headers: {
-                "content-type": "application/json",
-            },
-        };
-        // Fetch JWT
-        fetch(login_url, requestOptions)
-        .then(response => {
-            // trap error response from Web API
-            if (response.status !== 200) {
-                const message = 'Login error: ' + response.status + " " + response.statusText;
-                document.getElementById("message").innerHTML = message;
-                return;
-            }
-            // Valid response will contain json data
-            response.json().then(data => {
-                const message = 'Login success: ' + data.name;
-                document.getElementById("message").innerHTML = message;
-                })
-        })
-</script>
+            <p>Speed:
+                <input id="speed1" type="radio" name="speed" value="120" checked/>
+                <label for="speed1">Slow</label>
+                <input id="speed2" type="radio" name="speed" value="75"/>
+                <label for="speed2">Normal</label>
+                <input id="speed3" type="radio" name="speed" value="35"/>
+                <label for="speed3">Fast</label>
+            </p>
+            <p>Wall:
+                <input id="wallon" type="radio" name="wall" value="1" checked/>
+                <label for="wallon">On</label>
+                <input id="walloff" type="radio" name="wall" value="0"/>
+                <label for="walloff">Off</label>
             </p>
         </div>
     </div>
 </div>
 
 <script>
-    
-window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-        e.preventDefault();
-    }
-}, false);
     (function(){
         /* Attributes of Game */
         /////////////////////////////////////////////////////////////
@@ -149,7 +130,6 @@ window.addEventListener("keydown", function(e) {
         const SCREEN_SNAKE = 0;
         const screen_snake = document.getElementById("snake");
         const ele_score = document.getElementById("score_value");
-        const ele_score1 = document.getElementById("score");
         const speed_setting = document.getElementsByName("speed");
         const wall_setting = document.getElementsByName("wall");
         // HTML Screen IDs (div)
@@ -157,7 +137,6 @@ window.addEventListener("keydown", function(e) {
         const screen_menu = document.getElementById("menu");
         const screen_game_over = document.getElementById("gameover");
         const screen_setting = document.getElementById("setting");
-        const display_username = document.getElementById("user");
         // HTML Event IDs (a tags)
         const button_new_game = document.getElementById("new_game");
         const button_new_game1 = document.getElementById("new_game1");
@@ -165,7 +144,7 @@ window.addEventListener("keydown", function(e) {
         const button_setting_menu = document.getElementById("setting_menu");
         const button_setting_menu1 = document.getElementById("setting_menu1");
         // Game Control
-        const BLOCK = 15;   // size of block rendering
+        const BLOCK = 10;   // size of block rendering
         let SCREEN = SCREEN_MENU;
         let snake;
         let snake_dir;
@@ -174,6 +153,12 @@ window.addEventListener("keydown", function(e) {
         let food = {x: 0, y: 0};
         let score;
         let wall;
+        /* Display Control */
+        /////////////////////////////////////////////////////////////
+        // 0 for the game
+        // 1 for the main menu
+        // 2 for the settings screen
+        // 3 for the game over screen
         let showScreen = function(screen_opt){
             SCREEN = screen_opt;
             switch(screen_opt){
@@ -184,8 +169,6 @@ window.addEventListener("keydown", function(e) {
                     screen_game_over.style.display = "none";
                     break;
                 case SCREEN_GAME_OVER:
-                    // const username = getUsername();
-                    // saveScore(username);
                     screen_snake.style.display = "block";
                     screen_menu.style.display = "none";
                     screen_setting.style.display = "none";
@@ -289,18 +272,18 @@ window.addEventListener("keydown", function(e) {
                 snake[snake.length] = {x: snake[0].x, y: snake[0].y};
                 altScore(++score);
                 addFood();
-                activeDotFood(food.x, food.y);
+                activeDot(food.x, food.y);
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "#38d42c";
+            ctx.fillStyle = "royalblue";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
-                activeDotSnake(snake[i].x, snake[i].y);
+                activeDot(snake[i].x, snake[i].y);
             }
             // Paint food
-            activeDotFood(food.x, food.y);
+            activeDot(food.x, food.y);
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
@@ -352,12 +335,8 @@ window.addEventListener("keydown", function(e) {
         }
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
-        let activeDotFood = function(x, y){
-            ctx.fillStyle = "#cf794e";
-            ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
-        }
-        let activeDotSnake = function(x, y){
-            ctx.fillStyle = "#e6aad9";
+        let activeDot = function(x, y){
+            ctx.fillStyle = "#FFFFFF";
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
         }
         /* Random food placement */
@@ -380,7 +359,6 @@ window.addEventListener("keydown", function(e) {
         /////////////////////////////////////////////////////////////
         let altScore = function(score_val){
             ele_score.innerHTML = String(score_val);
-            ele_score1.innerHTML = String(score_val);
         }
         /////////////////////////////////////////////////////////////
         // Change the snake speed...
@@ -397,4 +375,4 @@ window.addEventListener("keydown", function(e) {
             if(wall === 1){screen_snake.style.borderColor = "#FFFFFF";}
         }
     })();
-
+</script>
