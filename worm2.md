@@ -1,16 +1,4 @@
----
-title: Classic Snake Game
-layout: base
-description: A pretty advanced use of JavaScript building classic snake game using menu controls, key events, snake simulation and timers.  
-permalink: /frontend/snake
-image: /images/snake.png
-categories: [C4.9]
-tags: [javascript, style, controls, timers]
-week: 16
-type: pbl
----
 
-{% include nav_frontend.html %}
 
 <style>
 
@@ -24,8 +12,8 @@ type: pbl
     canvas{
         display: none;
         border-style: solid;
-        border-width: 10px;
-        border-color: #FFFFFF;
+        border-width: 15px;
+        border-color: #E6F5FC;
     }
     canvas:focus{
         outline: none;
@@ -33,11 +21,11 @@ type: pbl
 
     /* All screens style */
     #gameover p, #setting p, #menu p{
-        font-size: 20px;
+        font-size: 25px;
     }
 
     #gameover a, #setting a, #menu a{
-        font-size: 30px;
+        font-size: 25px;
         display: block;
     }
 
@@ -47,7 +35,7 @@ type: pbl
 
     #gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
         content: ">";
-        margin-right: 10px;
+        margin-right: 15px;
     }
 
     #menu{
@@ -71,26 +59,26 @@ type: pbl
     }
 
     #setting input:checked + label{
-        background-color: #FFF;
-        color: #000;
+        background-color: #666;
+        color: #AAA;
     }
 </style>
 
 
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
+        <p class="fs-4">score: <span id="score_value">0</span></p>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
+            <p>press <span style="background-color: #a3afb5; color: #000000">space</span> to begin</p>
             <a id="new_game" class="link-alert">new game</a>
             <a id="setting_menu" class="link-alert">settings</a>
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
+            <p>you lost! press <span style="background-color: #879EA8; color: #000000">space</span> to try again</p>
             <a id="new_game1" class="link-alert">new game</a>
             <a id="setting_menu1" class="link-alert">settings</a>
         </div>
@@ -98,22 +86,51 @@ type: pbl
         <canvas id="snake" class="wrap" width="320" height="320" tabindex="1"></canvas>
         <!-- Settings Screen -->
         <div id="setting" class="py-4 text-light">
-            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
-            <a id="new_game2" class="link-alert">new game</a>
+            <p>welcome to settings- press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to the menu</p>
+            <a id="screen_menu" class="link-alert">new game</a>
             <br>
-            <p>Speed:
-                <input id="speed1" type="radio" name="speed" value="120" checked/>
-                <label for="speed1">Slow</label>
-                <input id="speed2" type="radio" name="speed" value="75"/>
-                <label for="speed2">Normal</label>
-                <input id="speed3" type="radio" name="speed" value="35"/>
-                <label for="speed3">Fast</label>
-            </p>
-            <p>Wall:
-                <input id="wallon" type="radio" name="wall" value="1" checked/>
-                <label for="wallon">On</label>
-                <input id="walloff" type="radio" name="wall" value="0"/>
-                <label for="walloff">Off</label>
+            <p><script>
+     // URL for deployment
+    var url = "https://nashcsp.duckdns.org" 
+     // Comment out next line for local testing
+    //url = "http://localhost:4444"
+     // Authenticate endpoint
+     const login_url = url + '/api/snakes/authenticate';
+    function login_user()
+        // Set body to include login data
+        const body = {
+            name:document.getElementbyId("name").value
+            uid: document.getElementById("uid").value,
+            snakescore: document.getElementById("snake score").value,
+        };
+        // Set Headers to support cross origin
+        const requestOptions = {
+            method: 'POST',
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            // credentials: 'include', // include, *same-origin, omit
+            body: JSON.stringify(body),
+            headers: {
+                "content-type": "application/json",
+            },
+        };
+        // Fetch JWT
+        fetch(login_url, requestOptions)
+        .then (response => 
+            // trap error response from Web API
+            if (response.status !== 200){ 
+                const message = 'Login error: ' + response.status + " " + response.statusText;
+                document.getElementById("message").innerHTML = message;
+                return;
+            })
+            // Valid response will contain json data
+            response.json().then(data => {
+                const message = 'Login success: ' + data.name;
+                document.getElementById("message").innerHTML = message;
+                })
+            
+    
+</script>
             </p>
         </div>
     </div>
@@ -276,7 +293,7 @@ type: pbl
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "royalblue";
+            ctx.fillStyle = "blue";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
@@ -352,9 +369,7 @@ type: pbl
         }
         /* Collision Detection */
         /////////////////////////////////////////////////////////////
-        let checkBlock = function(x, y, _x, _y){
-            return (x === _x && y === _y);
-        }
+    
         /* Update Score */
         /////////////////////////////////////////////////////////////
         let altScore = function(score_val){
@@ -371,7 +386,7 @@ type: pbl
         /////////////////////////////////////////////////////////////
         let setWall = function(wall_value){
             wall = wall_value;
-            if(wall === 0){screen_snake.style.borderColor = "#606060";}
+            if(wall === 0){screen_snake.style.borderColor = "#4EA6CF";}
             if(wall === 1){screen_snake.style.borderColor = "#FFFFFF";}
         }
     })();
