@@ -130,39 +130,6 @@ body {
   </body>
 </html>
 
-<!-- 
-<script>
-  const url = "http://nashcsp.duckdns.org/api/users/gen"
-  //Options
-  const options = {
-    method: 'GET'
-    mode: 'cors',
-    cache: 'default',
-    credentials: 'omit',
-    headers: {  w
-      'Content-Type': 'application/json'
-    ;}
-  };
-
-// Fetch
-fetch(url, options)
-  .then(response => {
-    if (response.status !==200) {
-      error('GET API response failure: ' + response.status);
-      return;
-    }
-    response.json().then(data => {
-      for(const event of data) {
-        document.getElementbyId(event.day+2).innerHTML = eventTitle
-      }
-    })
-  })
-.catch(err => {
-  error(err + " " + url);
-});
-
-</script> -->
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   createSquares();
@@ -327,3 +294,98 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
+
+<!-- <script>
+  // Constants
+const API_URL = 'https://nashcsp.duckdns.org/api/wordles/gen';
+const MAX_HINTS = 5;
+
+// Variables
+let word = '';
+let hint = '';
+let guesses = 0;
+let hintsUsed = 0;
+
+// DOM Elements
+const guessInput = document.getElementById('guess-input');
+const guessButton = document.getElementById('guess-button');
+const wordDisplay = document.getElementById('word-display');
+const newWordButton = document.getElementById('new-word-button');
+const hintDisplay = document.getElementById('hint-display');
+
+// Event Listeners
+guessButton.addEventListener('click', checkGuess);
+newWordButton.addEventListener('click', getNewWord);
+
+// Functions
+async function getNewWord() {
+	try {
+		const response = await fetch(API_URL);
+		const data = await response.json();
+		word = data.word.toLowerCase();
+		hint = '';
+		guesses = 0;
+		hintsUsed = 0;
+
+		// Generate hint
+		for (let i = 0; i < word.length; i++) {
+			if (i === 0) {
+				hint += word[i];
+			} else {
+				hint += '_';
+			}
+		}
+
+		// Update DOM
+		wordDisplay.innerText = hint;
+		hintDisplay.innerText = '';
+	} catch (error) {
+		console.error(error);
+		alert('Error getting new word. Please try again later.');
+	}
+}
+
+function checkGuess() {
+	const guess = guessInput.value.toLowerCase();
+
+	if (guess === '') {
+		alert('Please enter a guess.');
+		return;
+	}
+
+	if (guess === word) {
+		alert(`Congratulations! You guessed the word in ${guesses} guesses.`);
+		getNewWord();
+		return;
+	}
+
+	if (guess.length !== word.length) {
+		alert('Your guess must be the same length as the word.');
+		return;
+	}
+
+	// Check for correct letters in correct position
+	let correctLetters = 0;
+	for (let i = 0; i < word.length; i++) {
+		if (word[i] === guess[i]) {
+			hint = replaceCharacter(hint, i, word[i]);
+			correctLetters++;
+		}
+	}
+
+	// Check for correct letters in wrong position
+	for (let i = 0; i < word.length; i++) {
+		if (word[i] !== guess[i] && word.includes(guess[i])) {
+			hint = replaceCharacter(hint, i, guess[i]);
+		}
+	}
+
+	// Update DOM
+	wordDisplay.innerText = hint;
+	guessInput.value = '';
+	guesses++;
+
+	// Check for hint
+	if (correctLetters === 0 && hintsUsed < MAX_HINT
+</script> -->
