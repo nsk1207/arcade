@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html>
+
+
+<head>
+  <title>car</title>
+</head>
+<body>
+  <div style = "position:fixed; left: 300px; top: 100px;">
+    <img src="car.png">
+ </div>
+
+ 
+  
+</body>
+  
+</body>
   <head>
   	<title>snake!</title>
   </head>
@@ -7,7 +22,7 @@
   <body>
 
     <div id="score">0</div>
-    <canvas id="snakeboard" width="400" height="400"></canvas>
+    <canvas id="snakeboard" width="500" height="500"></canvas>
 
     <style>
       #snakeboard {
@@ -18,7 +33,7 @@
       }
       #score {
         text-align: center;
-        font-size: 140px;
+        font-size: 75px;
       }
     </style>
   </body>
@@ -123,7 +138,8 @@
       const hitToptWall = snake[0].y < 0;
       const hitBottomWall = snake[0].y > snakeboard.height - 10;
       return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
-      print("youre done")
+    
+    
     }
 
     function random_food(min, max) {
@@ -176,8 +192,9 @@
         dy = 10;
       }
       if (keyPressed === A_KEY && !randkey) {
-        snake.pop()
+        clear_board()
       }
+      
     }
 
     function move_snake() {
@@ -188,7 +205,7 @@
       const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
       if (has_eaten_food) {
         // Increase score
-        score += 10;
+        score += 1;
         // Display score on screen
         document.getElementById('score').innerHTML = score;
         // Generate new food location
@@ -197,5 +214,108 @@
         // Remove the last part of snake body
         snake.pop();
       }}
+
+    
     </script>
+<form action="javascript:login_user()">
+    <p><label>
+        name:
+        <input type="text" name="name" id="name" required>
+    </label></p>
+    <p><label> 
+        uid:
+        <input type="text" name="uid" id="uid" required>
+    </label></p>
+    <p><label>
+        snake score:
+        <input type="number" name="snake score" id="snakescore" required>
+    </label></p>
+    <p><button>log</button></p>
+    <p id="message"></p>
+</form>
+
+<script>
+    // URL for deployment
+   
+    var url = "https://nashcsp.duckdns.org"; 
+// Comment out next line for local testing
+
+// Authenticate endpoint
+const login_url = url + '/api/snakes/';
+
+function login_user(){
+   // Set body to include login data
+   const body = {
+       name: document.getElementById("name").value,
+       uid: document.getElementById("uid").value,
+       snakescore: parseInt(document.getElementById("snake-score").value) // assuming snake score is a number
+   };
+   // Set Headers to support cross origin
+   const requestOptions = {
+       method: 'POST',
+       mode: 'cors', // no-cors, *cors, same-origin
+       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+       // credentials: 'include', // include, *same-origin, omit
+       body: JSON.stringify(body),
+       headers: {
+           "content-type": "application/json",
+       },
+   };
+   // Fetch JWT
+   fetch(login_url, requestOptions)
+   .then(response => {
+       // trap error response from Web API
+       if (response.status !== 200) {
+           const message = 'Login error: ' + response.status + " " + response.statusText;
+           document.getElementById("message").innerHTML = message;
+           localStorage.removeItem("uid");
+           localStorage.removeItem("visitor");
+           return;
+       }
+       // Valid response will contain json data
+       response.json().then(data => {
+           const message = 'Login success: ' + data.name;
+           document.getElementById("message").innerHTML = message;
+           localStorage.setItem("uid", data.uid);
+           localStorage.setItem("visitor", data.name);
+       })
+   });
+}
+
+</script>
+<head>
+  <title>hampy</title>
+</head>
+<body>
+  <div style = "position:fixed; left:1100px; top: 0px;">
+    <img src="ad.png">
+ </div>
+  
+</body>
+
+<head>
+  <title>hamp</title>
+</head>
+<body>
+  <div style = "position:fixed; left: 0px; top: 500px;">
+    <img src="h.png">
+ </div>
+
+ <head>
+  <title>bread</title>
+</head>
+<body>
+  <div style = "position:fixed; left: 0px; top: 250px;">
+    <img src="burger.png"
+    width = "300"
+    height = "300"
+    >
+    
+ </div>
+ 
+ 
+  
+</body>
+
+
 </html>
