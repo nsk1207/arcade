@@ -132,6 +132,8 @@ function checkAnswer() {
             _result.innerHTML = '<p> <i class = "fas fa-check"></i>Correct Answer! </p>';
         } else {
             _result.innerHTML = `<p> <i class = "fas fa-check"></i>Wrong Answer! <b>Correct Answer:</b> ${correctAnswer}</p>`;
+            location.reload();
+            return false;
         }
         checkCount();
     } else {

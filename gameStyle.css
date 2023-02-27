@@ -59,7 +59,7 @@ h2 {
 }
 
 .correct {
-    background: linear-gradient(32deg, cyan);
+    background: linear-2gradient(32deg, cyan);
 }
 
 .incorrect {
@@ -139,11 +139,19 @@ h2 {
     box-shadow: 0 2px darkgreen;
     background-color: rgb(29, 29, 26);
     display: block;
+    transition: transform 150ms;
+    transform: scale(1.03);
 }
 
 .quiz-options li:hover{
-    background-color:green;
+    /* background-color:green;
     border-color: lightgreen;
+    transition: transform 150ms;
+    transform: scale(1.03); */
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 darkgreen;
+    transition: transform 150ms;
+    transform: scale(1.03);
 }
 
 .selected{
