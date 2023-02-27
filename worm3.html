@@ -138,9 +138,16 @@
       const hitToptWall = snake[0].y < 0;
       const hitBottomWall = snake[0].y > snakeboard.height - 10;
       return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
+      if (hitLeftWall || hitRightWall || hitTopWall || hitBottomWall) {
+    console.log("game over!");
+    return true;
+  }
+
+  return false;
+}
     
     
-    }
+    
 
     function random_food(min, max) {
       return Math.round((Math.random() * (max-min) + min) / 10) * 10;
@@ -159,43 +166,38 @@
     }
 
     function change_direction(event) {
-      const LEFT_KEY = 37;
-      const RIGHT_KEY = 39;
-      const UP_KEY = 38;
-      const DOWN_KEY = 40;
-      const A_KEY = 56;
-      
-    // Prevent the snake from reversing
-    
-      if (changing_direction) return;
-      changing_direction = true;
-      const keyPressed = event.keyCode;
-      const goingUp = dy === -10;
-      const goingDown = dy === 10;
-      const goingRight = dx === 10;
-      const goingLeft = dx === -10;
-      const randkey = dx === 0;
-      if (keyPressed === LEFT_KEY && !goingRight) {
-        dx = -10;
-        dy = 0;
-      }
-      if (keyPressed === UP_KEY && !goingDown) {
-        dx = 0;
-        dy = -10;
-      }
-      if (keyPressed === RIGHT_KEY && !goingLeft) {
-        dx = 10;
-        dy = 0;
-      }
-      if (keyPressed === DOWN_KEY && !goingUp) {
-        dx = 0;
-        dy = 10;
-      }
-      if (keyPressed === A_KEY && !randkey) {
-        clear_board()
-      }
-      
-    }
+  const LEFT_KEY = 37;
+  const RIGHT_KEY = 39;
+  const UP_KEY = 38;
+  const DOWN_KEY = 40;
+  const A_KEY = 56;
+
+  // Prevent the snake from reversing
+  if (changing_direction) return;
+  changing_direction = true;
+
+  const keyPressed = event.keyCode;
+
+  if (keyPressed === LEFT_KEY && dx !== 10) {
+    dx = -10;
+    dy = 0;
+  } else if (keyPressed === UP_KEY && dy !== 10) {
+    dx = 0;
+    dy = -10;
+  } else if (keyPressed === RIGHT_KEY && dx !== -10) {
+    dx = 10;
+    dy = 0;
+  } else if (keyPressed === DOWN_KEY && dy !== -10) {
+    dx = 0;
+    dy = 10;
+  } else if (keyPressed === A_KEY) {
+    clear_board();
+  } else {
+    alert("Invalid key pressed! Please use the arrow keys or the 'A' key.");
+    changing_direction = false;
+  }
+}
+
 
     function move_snake() {
       // Create the new Snake's head
@@ -208,6 +210,7 @@
         score += 1;
         // Display score on screen
         document.getElementById('score').innerHTML = score;
+        document.getElementById('snakescore').value = score; // up
         // Generate new food location
         gen_food();
       } else {
@@ -241,14 +244,14 @@
 // Comment out next line for local testing
 
 // Authenticate endpoint
-const login_url = url + '/api/snake/';
+const login_url = url + '/api/snake/create';
 
 function login_user(){
    // Set body to include login data
    const body = {
        name: document.getElementById("name").value,
        uid: document.getElementById("uid").value,
-       snakescore: parseInt(document.getElementById("snake-score").value) // assuming snake score is a number
+       snakescore: parseInt(document.getElementById("snakescore").value) // assuming snake score is a number
    };
    // Set Headers to support cross origin
    const requestOptions = {
@@ -308,17 +311,7 @@ function login_user(){
     <img src="h.png">
  </div>
 
- <head>
-  <title>bread</title>
-</head>
-<body>
-  <div style = "position:fixed; left: 0px; top: 250px;">
-    <img src="burger.png"
-    width = "300"
-    height = "300"
-    >
-    
- </div>
+ 
  
  
   
