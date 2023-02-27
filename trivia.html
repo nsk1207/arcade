@@ -91,7 +91,7 @@ function showQuestion(data){
     incorrectAnswer2 = incorrectAnswer2;
     incorrectAnswer3 = incorrectAnswer3;
     let optionsList = [correctAnswer, incorrectAnswer1, incorrectAnswer2, incorrectAnswer3];
-//    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer1.length + 1)), 0, correctAnswer); //adds the correct answer to the list of options, then randomizes it's position
+    optionsList.splice(Math.floor(Math.random() * (optionsList.length + 1)), 0, `I GIVE UP`); //adds the correct answer to the list of options, then randomizes it's position
     _question.innerHTML = `${question}`;
     console.log(optionsList); 
      //<br> <span class = "category"> ${data.category} </span>
