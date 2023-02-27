@@ -241,7 +241,7 @@
 // Comment out next line for local testing
 
 // Authenticate endpoint
-const login_url = url + '/api/snakes/';
+const login_url = url + '/api/snake/';
 
 function login_user(){
    // Set body to include login data
@@ -274,10 +274,17 @@ function login_user(){
        }
        // Valid response will contain json data
        response.json().then(data => {
-           const message = 'Login success: ' + data.name;
-           document.getElementById("message").innerHTML = message;
-           localStorage.setItem("uid", data.uid);
-           localStorage.setItem("visitor", data.name);
+               if (data.error) {
+                   const message = data.error;
+                   document.getElementById("message").innerHTML = message;
+                   localStorage.removeItem("uid");
+                   localStorage.removeItem("visitor");
+                   return;
+               }
+               const message = 'Login success: ' + data.name;
+               document.getElementById("message").innerHTML = message;
+               localStorage.setItem("uid", data.uid);
+               localStorage.setItem("visitor", data.name);
        })
    });
 }
