@@ -135,9 +135,9 @@ var play=function() {
           placementY+=Y5;
         }
       }
-      else {
-        numCorrect-=5;
-      }
+        else {
+          numCorrect-=5;
+        }
     };
   };
 };
@@ -172,9 +172,9 @@ draw= function() {
   if(mouseX>100 && mouseX<400 && mouseY>100 && mouseY<400) {
     circle=315;
   }
-  else {
-    circle=300;
-  }
+    else {
+      circle=300;
+    }
   mousePressed = function() {
     if(mouseX>100 && mouseX<400 && mouseY>100 && mouseY<400 && currentScene===0) {
       play();
