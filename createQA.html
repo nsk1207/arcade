@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggest a Question!</title>
+    <link rel="stylesheet" href="gameStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body class = "flex">
+<div class="container"> 
+    <div class="title">
+        <h1>Suggest a Question</h1>
+    </div>
+    <p>Create API</p>
+
+    <form method = "post" id = "createQA">
+        <label for="question">Question</label>
+        <input type="text" id="question" name="question" placeholder="Example Question Here" value=""><br>
+        <label for="correctAnswer">Correct Answer</label>
+        <input type="text" id="correctAnswer" name="correctAnswer" placeholder="Correct Answer Here" value=""><br>
+        <label for="incorrectAnswer1">Incorrect Answer 1</label>
+        <input type="text" id="incorrectAnswer1" name="incorrectAnswer1" placeholder="Incorrect Answer 1" value=""><br>
+        <label for="incorrectAnswer2">Incorrect Answer 2</label>
+        <input type="text" id="incorrectAnswer2" name="incorrectAnswer2" placeholder="Incorrect Answer 2" value=""><br>
+        <label for="incorrectAnswer3">Incorrect Answer 3</label>
+        <input type="text" id="incorrectAnswer3" name="incorrectAnswer3" placeholder="Incorrect Answer 3" value=""><br>
+        <button type="button" id="qCreate"><h3>Suggest</h3></button>
+      </form>
+</div>
+<script>
+    $("#qCreate").click(async function() {
+            let correctAnswer = document.getElementById("correctAnswer").value;
+            let incorrectAnswer1 = document.getElementById("incorrectAnswer1").value;
+            let incorrectAnswer2 = document.getElementById("incorrectAnswer2").value;
+            let incorrectAnswer3 = document.getElementById("incorrectAnswer3").value;
+            let question = document.getElementById("question").value;
+            let url = "https://nashcsp.duckdns.org/api/trivia/create";
+        
+            const headers = {
+                'Content-Type': 'application/json',
+            };
+            const body = JSON.stringify({question: question, correctAnswer: correctAnswer,  incorrectAnswer1: incorrectAnswer1, incorrectAnswer2: incorrectAnswer2, incorrectAnswer3: incorrectAnswer3});
+
+        try {
+            let response = await fetch(url, {
+                mode: 'cors',
+                method: 'POST',
+                headers: headers,
+                body: body
+            });
+            let result = await response.json();
+            console.log('Success:', result);
+        if (result.status == "success"){
+            // do whatever for success
+        } else {
+            // do whatever for failure
+        }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+
+        });
+</script>
+</body>
